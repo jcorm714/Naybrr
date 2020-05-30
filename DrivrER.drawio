@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-05-30T00:16:52.999Z" agent="5.0 (Macintosh)" etag="nQcNNoy33Z8q_glmASrv" version="13.1.8" type="github">
+<mxfile host="app.diagrams.net" modified="2020-05-30T00:17:49.406Z" agent="5.0 (Macintosh)" etag="Bs2AoYdpHSvZt-4m7UjW" version="13.1.8" type="github">
   <diagram id="unekgs6rDZwSWhFbVp5t" name="Page-1">
-    <mxGraphModel dx="946" dy="549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1351" dy="784" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -81,6 +81,18 @@
         </mxCell>
         <mxCell id="l6Wv7LGstVZR9h47YhLv-27" value="CustomerId" style="text;strokeColor=#10739e;fillColor=#b1ddf0;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="l6Wv7LGstVZR9h47YhLv-23">
           <mxGeometry y="104" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="l6Wv7LGstVZR9h47YhLv-30" value="Cart" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="40" y="610" width="160" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="l6Wv7LGstVZR9h47YhLv-31" value="CartId" style="text;strokeColor=#10739e;fillColor=#b1ddf0;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="l6Wv7LGstVZR9h47YhLv-30">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="l6Wv7LGstVZR9h47YhLv-32" value="CustomerId" style="text;strokeColor=#10739e;fillColor=#b1ddf0;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="l6Wv7LGstVZR9h47YhLv-30">
+          <mxGeometry y="52" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="l6Wv7LGstVZR9h47YhLv-33" value="Date" style="text;strokeColor=#10739e;fillColor=#b1ddf0;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="l6Wv7LGstVZR9h47YhLv-30">
+          <mxGeometry y="78" width="160" height="26" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
