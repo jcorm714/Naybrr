@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-06-15T23:01:59.902Z" agent="5.0 (Windows)" etag="tq_nGwkCqOGV7ab2uGWl" version="13.2.4" type="github">
+<mxfile host="app.diagrams.net" modified="2020-06-15T23:02:06.550Z" agent="5.0 (Windows)" etag="8JTbh9SFBF-Uhc_-01P7" version="13.2.4" type="github">
   <diagram id="lPyz5LR_7ZNct5TZr97H" name="Page-1">
     <mxGraphModel dx="1422" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -17,7 +17,7 @@
           <mxGeometry y="108" width="160" height="36" as="geometry" />
         </mxCell>
         <mxCell id="W1TdXg9Vv3ffLSo9VdAI-5" value="Item" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="530" y="110" width="160" height="144" as="geometry" />
+          <mxGeometry x="530" y="110" width="160" height="160" as="geometry" />
         </mxCell>
         <mxCell id="W1TdXg9Vv3ffLSo9VdAI-6" value="+ Name: String&#xa;+ Quantity: Int&#xa;+ ImagePath: String&#xa;+ Price: Float&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="W1TdXg9Vv3ffLSo9VdAI-5" vertex="1">
           <mxGeometry y="26" width="160" height="74" as="geometry" />
@@ -26,7 +26,7 @@
           <mxGeometry y="100" width="160" height="8" as="geometry" />
         </mxCell>
         <mxCell id="W1TdXg9Vv3ffLSo9VdAI-8" value="+  op == &#xa;+  op &gt; &#xa;+  op &lt;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="W1TdXg9Vv3ffLSo9VdAI-5" vertex="1">
-          <mxGeometry y="108" width="160" height="36" as="geometry" />
+          <mxGeometry y="108" width="160" height="52" as="geometry" />
         </mxCell>
         <mxCell id="lzAFo5b4Tt8IDg3ihHUa-5" value="Order" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
           <mxGeometry x="740" y="110" width="160" height="182" as="geometry" />
