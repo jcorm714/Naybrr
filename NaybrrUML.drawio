@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-06-16T22:16:53.180Z" agent="5.0 (Windows)" etag="L_nNAFCSpmHLHNB_mzaU" version="13.2.4" type="github">
+<mxfile host="app.diagrams.net" modified="2020-06-16T22:23:00.985Z" agent="5.0 (Windows)" etag="Xt-d0mehCiaOzkiAoBGt" version="13.2.4" type="github">
   <diagram id="lPyz5LR_7ZNct5TZr97H" name="Page-1">
     <mxGraphModel dx="1422" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -58,8 +58,20 @@
         <mxCell id="lzAFo5b4Tt8IDg3ihHUa-8" value="+ getOrderPrice(): Float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="lzAFo5b4Tt8IDg3ihHUa-5">
           <mxGeometry y="108" width="160" height="74" as="geometry" />
         </mxCell>
+        <mxCell id="lzAFo5b4Tt8IDg3ihHUa-17" value="DBLogin" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="670" width="190" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="lzAFo5b4Tt8IDg3ihHUa-18" value="- connStr: String&#xa;+ rowcount&#xa;+ database &#xa;&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="lzAFo5b4Tt8IDg3ihHUa-17">
+          <mxGeometry y="40" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lzAFo5b4Tt8IDg3ihHUa-19" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="lzAFo5b4Tt8IDg3ihHUa-17">
+          <mxGeometry y="100" width="190" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="lzAFo5b4Tt8IDg3ihHUa-20" value="+execute(): bool&#xa;- rollback() &#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="lzAFo5b4Tt8IDg3ihHUa-17">
+          <mxGeometry y="108" width="190" height="42" as="geometry" />
+        </mxCell>
         <mxCell id="lzAFo5b4Tt8IDg3ihHUa-10" value="DBAccessor&#xa;&lt;&lt; Abstract &gt;&gt;&#xa;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-          <mxGeometry x="50" y="440" width="190" height="150" as="geometry" />
+          <mxGeometry x="270" y="470" width="190" height="150" as="geometry" />
         </mxCell>
         <mxCell id="lzAFo5b4Tt8IDg3ihHUa-11" value="- connStr: String&#xa;+ rowcount&#xa;+ database &#xa;&#xa;&#xa;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="lzAFo5b4Tt8IDg3ihHUa-10">
           <mxGeometry y="40" width="190" height="60" as="geometry" />
