@@ -1,1 +1,2 @@
 # Naybrr
+Naybrr is an application for the antisocial people! Naybrr's main purpose is to order goods or products from someone nearby who may be able to assist in need. Like borrowing a cup of sugar, but not having to worry about returning it! This app searches for items that you may need nearby and allows you to purchase and make a connection safely without having to exchange cash. Maintain a safe distance and get to know your Naybrr better!
