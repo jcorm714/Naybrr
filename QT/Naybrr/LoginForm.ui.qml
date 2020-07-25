@@ -5,6 +5,13 @@ Item {
     id: element
     width: 400
     height: 400
+    property alias btnRegister: btnRegister
+
+    Rectangle {
+        id: rectangle
+        color: "#ffffff"
+        anchors.fill: parent
+    }
 
     TextField {
         id: txtUsername
@@ -35,3 +42,9 @@ Item {
         text: qsTr("Login")
     }
 }
+
+/*##^##
+Designer {
+    D{i:1;anchors_height:397;anchors_width:402}
+}
+##^##*/

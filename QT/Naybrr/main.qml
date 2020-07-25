@@ -10,10 +10,26 @@ ApplicationWindow {
     StackView {
         id: stackView
         anchors.fill: parent
-
+        initialItem: login
 
     }
-    LoginForm {
+
+
+    Component{
+        id: login
+        LoginForm {
+
+            btnRegister.onClicked: {
+                stackView.push(registration)
+            }
+        }
+    }
+
+    Component{
+        id: registration
+        RegistrationForm{
+
+        }
     }
 
 }
