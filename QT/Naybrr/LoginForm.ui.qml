@@ -5,13 +5,11 @@ Item {
     id: element
     width: 400
     height: 400
+    property alias btnLogin: btnLogin
     property alias btnRegister: btnRegister
-
-    Rectangle {
-        id: rectangle
-        color: "#ffffff"
-        anchors.fill: parent
-    }
+    property alias txtUsername: txtUsername
+    property alias txtPassword: txtPassword
+    property alias lblOut: lblOut
 
     TextField {
         id: txtUsername
@@ -41,10 +39,12 @@ Item {
         y: 194
         text: qsTr("Login")
     }
-}
 
-/*##^##
-Designer {
-    D{i:1;anchors_height:397;anchors_width:402}
+    Text {
+        id: lblOut
+        x: 171
+        y: 258
+        text: qsTr("")
+        font.pixelSize: 12
+    }
 }
-##^##*/
