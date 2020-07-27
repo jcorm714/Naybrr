@@ -61,3 +61,26 @@ Item* User::item(QQmlListProperty<Item>* list, int ndx){
 int User::itemCount(QQmlListProperty<Item>* list){
     return reinterpret_cast<User*>(list->data)->itemCount();
 }
+
+
+//TODO: actually connect to the database
+bool User::login(QString name, QString password){
+    return (name == "test" && password == "test");
+}
+
+bool User::registerUser(QString uname, QString pass, QString email,
+                        QString addr1, QString addr2, QString city,
+                        QString state, QString zip) {
+
+    qDebug() << uname << ' ' << pass << ' ' << email << '\n'
+           << addr1 << ' ' << addr2 << '\n'
+           << city << ' ' << state << ' ' << zip;
+
+    return true;
+}
+
+bool User::registerUser(User* u){
+    registerUser(u->getUsername(), u->getPassword(), u->getEmail(),
+                 u->getAddr1(), u->getAddr2(), u->getCity(),
+                 u->getState(),u->getZip());
+}
