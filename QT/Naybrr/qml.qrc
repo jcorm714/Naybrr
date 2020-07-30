@@ -6,5 +6,6 @@
         <file>LoginForm.ui.qml</file>
         <file>Registration.qml</file>
         <file>RegistrationForm.ui.qml</file>
+        <file>placeholders.qrc</file>
     </qresource>
 </RCC>
