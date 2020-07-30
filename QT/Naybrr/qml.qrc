@@ -7,5 +7,7 @@
         <file>Registration.qml</file>
         <file>RegistrationForm.ui.qml</file>
         <file>placeholders.qrc</file>
+        <file>AppHub.qml</file>
+        <file>AppHubForm.ui.qml</file>
     </qresource>
 </RCC>
