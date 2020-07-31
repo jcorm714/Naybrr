@@ -40,7 +40,11 @@ ApplicationWindow {
             btnLogin.onClicked: {
 
                 let isValid = validateLogin();
-                lblOut.text = (isValid)? "success": "incorrect login";
+                if(isValid){
+                    stackView.push(appHub)
+                }
+
+                //lblOut.text = (isValid)? "success": "incorrect login";
             }
 
 
@@ -134,6 +138,13 @@ ApplicationWindow {
                         stackView.pop()
                     }
                 }
+        }
+    }
+
+    Component{
+        id: appHub
+        AppHub{
+
         }
     }
 

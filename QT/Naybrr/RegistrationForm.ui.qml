@@ -33,6 +33,7 @@ Item {
         width: 178
         height: 40
         placeholderText: qsTr("Password")
+        echoMode: TextInput.Password
     }
 
     TextField {
@@ -44,6 +45,7 @@ Item {
         text: ""
         font.bold: false
         placeholderText: qsTr("Confirm Password")
+        echoMode: TextInput.Password
     }
 
     TextField {

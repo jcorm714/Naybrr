@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/placeholder">
+        <file alias="eggs.jpg">D:/Downloads/eggs.jpg</file>
+        <file alias="butter.jpg">D:/Downloads/butter.jpg</file>
+        <file alias="cinnamon.jpg">D:/Downloads/cinnamon.jpg</file>
+        <file alias="salt.jpg">D:/Downloads/salt.jpg</file>
+    </qresource>
+</RCC>
