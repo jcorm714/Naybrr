@@ -9,5 +9,7 @@
         <file>placeholders.qrc</file>
         <file>AppHub.qml</file>
         <file>AppHubForm.ui.qml</file>
+        <file>ItemsList.qml</file>
+        <file>ItemsListForm.ui.qml</file>
     </qresource>
 </RCC>

@@ -144,7 +144,7 @@ ApplicationWindow {
     Component{
         id: appHub
         AppHub{
-
+            swipeView.currentIndex:
         }
     }
 
