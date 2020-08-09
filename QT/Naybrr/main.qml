@@ -141,6 +141,7 @@ ApplicationWindow {
         }
     }
 
+
     Component{
         id: appHub
         AppHub{

@@ -4,6 +4,7 @@
 #include<QObject>
 #include<QString>
 #include<QtQml>
+#include <QNetworkAccessManager>
 
 class Item : public QObject
 {
@@ -17,7 +18,8 @@ class Item : public QObject
 public:
     Item(QObject *parent=nullptr);
 
-
+    bool mImageReady;
+    QFile* mFile;
     //gets and sets
     int getId() { return mItemId;}
     int getQuantity() {return mItemQuantity;}
@@ -32,6 +34,10 @@ public:
     void setImagePath(QString p){mImagePath = p;}
 
 
+    //the following two functions allow for us to download images, and display them
+    void downloadImage(const QString &url, const QString &filePath);
+    void onImageReady(QNetworkReply * reply);
+
 private:
     int mItemId;
     int mAccountId;
@@ -43,7 +49,7 @@ private:
 
 
 signals:
-    void onImageUpdated();
+    void onImageGet();
 };
 
 #endif // ITEM_H
