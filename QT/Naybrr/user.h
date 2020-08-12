@@ -31,6 +31,11 @@ public:
     Q_INVOKABLE static bool registerUser(QString uname, QString pass, QString email,
                                          QString addr1, QString addr2, QString city,
                                          QString state, QString zip);
+    Q_INVOKABLE static bool updateUser(int id, User*);
+    Q_INVOKABLE static bool updateUser(int id, QString uname, QString pass, QString email,
+                                         QString addr1, QString addr2, QString city,
+                                         QString state, QString zip);
+
     void appendItem(Item* i);
     Item *item(int) const;
     int itemCount() const;
