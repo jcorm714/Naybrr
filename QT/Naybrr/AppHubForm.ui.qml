@@ -9,6 +9,7 @@ Item {
     property alias element: element
     property alias swipeView: swipeView
     property alias tabBar: tabBar
+    property alias maSettings: maSettings
 
     SwipeView {
         id: swipeView
@@ -23,9 +24,9 @@ Item {
 
     TextField {
         id: txtSearch
-        x: 14
+        x: 59
         y: 19
-        width: 368
+        width: 323
         height: 40
         placeholderText: qsTr("Search")
     }
@@ -43,5 +44,23 @@ Item {
         TabButton {
             text: qsTr("Items")
         }
+    }
+
+    Image {
+        id: image
+        x: 0
+        y: 19
+        width: 59
+        height: 41
+        source: "qrc:/qtquickplugin/images/template_image.png"
+        fillMode: Image.PreserveAspectFit
+    }
+
+    MouseArea {
+        id: maSettings
+        x: 6
+        y: 26
+        width: 48
+        height: 27
     }
 }
