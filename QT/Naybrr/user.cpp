@@ -80,7 +80,29 @@ bool User::registerUser(QString uname, QString pass, QString email,
 }
 
 bool User::registerUser(User* u){
-    registerUser(u->getUsername(), u->getPassword(), u->getEmail(),
+    return registerUser(u->getUsername(), u->getPassword(), u->getEmail(),
                  u->getAddr1(), u->getAddr2(), u->getCity(),
                  u->getState(),u->getZip());
+
 }
+
+bool User::updateUser(int id, User * u){
+    return updateUser(id ,u->getUsername(), u->getPassword(), u->getEmail(),
+                 u->getAddr1(), u->getAddr2(), u->getCity(),
+                 u->getState(),u->getZip());
+
+
+}
+
+bool User::updateUser(int id, QString uname,
+                      QString pass, QString email, QString addr1, QString addr2,
+                      QString city, QString state, QString zip)
+{
+
+
+    qDebug() << id << ' ' << uname << ' ' << pass << ' ' << email << '\n'
+           << addr1 << ' ' << addr2 << '\n'
+           << city << ' ' << state << ' ' << zip;
+
+}
+
