@@ -80,7 +80,8 @@ bool User::registerUser(QString uname, QString pass, QString email,
 }
 
 bool User::registerUser(User* u){
-    registerUser(u->getUsername(), u->getPassword(), u->getEmail(),
+    return registerUser(u->getUsername(), u->getPassword(), u->getEmail(),
                  u->getAddr1(), u->getAddr2(), u->getCity(),
                  u->getState(),u->getZip());
+
 }

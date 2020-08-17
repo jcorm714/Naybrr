@@ -1,29 +1,63 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
+import Naybrr 1.0
 ItemsListForm {
+    Item{
+        id: itemRef
+    }
 
     listView.model: ListModel {
         ListElement {
+            db_id: 0
             name: "Salt"
             desc: "Lorem Ipsum"
             price: "$4.99"
         }
         ListElement {
-            name: "Salt"
+            db_id: 1
+            name: "Second"
             desc: "Lorem Ipsum"
             price: "$4.99"
         }
         ListElement {
-            name: "Salt"
+            db_id: 2
+            name: "Third"
             desc: "Lorem Ipsum"
             price: "$4.99"
         }
     }
+
+    function make_pretty_decimal(x){
+      let y = ((x * 100) + 0.5)/100
+      y = y.toString()
+      let deciIdx = y.indexOf(".")
+      return  y.substr(0, deciIdx + 3)
+
+    }
+
+
     listView.delegate: ItemDelegate {
         x: 5
         width: parent.width
         height: 40
-        onClicked: console.log(name, desc, price)
+        onClicked:{
+                let i = itemRef.findItemInDB(db_id);
+                let itemView = Qt.createComponent("DetailedItem.qml")
+                console.log(i.price)
+                let propertyValues = {
+                                        imgPath: i.imagePath,
+                                        itemName: i.name,
+                                        itemQuantity: "Quantity: " + i.quantity,
+                                        itemDes: i.desc,
+                                        itemPrice: "$" + make_pretty_decimal(i.price),
+
+                    }
+                let obj = itemView.createObject(stackView, propertyValues)
+//               obj.btnReturn.onClicked = function(){ stackView.pop()}
+//               obj.btnPurchase.onClicked = function() {console.log("Purchased Item");}
+                stackView.push(obj)
+        }
+
         Row {
             id: row1
 
@@ -52,9 +86,5 @@ ItemsListForm {
     }
 }
 
-/*##^##
-Designer {
-    D{i:0;autoSize:true;height:480;width:640}
-}
-##^##*/
+
 

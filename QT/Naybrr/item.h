@@ -9,14 +9,26 @@
 class Item : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(int dbId READ getId)
     Q_PROPERTY(int quantity READ getQuantity WRITE setQuantity)
     Q_PROPERTY(float price READ getPrice WRITE setPrice)
     Q_PROPERTY(QString name READ getName WRITE setName)
     Q_PROPERTY(QString desc READ getDesc WRITE setDesc)
     Q_PROPERTY(QString imgPath READ getImagePath WRITE setImagePath)
     QML_ELEMENT
+
+
 public:
+
+    Q_INVOKABLE static Item* findItemInDB(int id);
+
+    //temporary db placeholder
+    static QList<Item*> db;
+
+    // for constructing from db call
+    Item(int id);
     Item(QObject *parent=nullptr);
+    Item(int, int, float, QString, QString, QString);
 
     bool mImageReady;
     QFile* mFile;

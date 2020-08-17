@@ -11,5 +11,7 @@
         <file>AppHubForm.ui.qml</file>
         <file>ItemsList.qml</file>
         <file>ItemsListForm.ui.qml</file>
+        <file>DetailedItem.qml</file>
+        <file>DetailedItemForm.ui.qml</file>
     </qresource>
 </RCC>
