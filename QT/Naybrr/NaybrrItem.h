@@ -1,12 +1,14 @@
-#ifndef ITEM_H
-#define ITEM_H
+#ifndef NAYBRR_ITEM_H
+#define NAYBRR_ITEM_H
 
 #include<QObject>
 #include<QString>
 #include<QtQml>
 #include <QNetworkAccessManager>
+#include<QStandardItemModel>
+#include<QAbstractItemModel>
 
-class Item : public QObject
+class NaybrrItem : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int dbId READ getId)
@@ -20,15 +22,14 @@ class Item : public QObject
 
 public:
 
-    Q_INVOKABLE static Item* findItemInDB(int id);
+    Q_INVOKABLE static NaybrrItem* findItemInDB(int id);
 
-    //temporary db placeholder
-    static QList<Item*> db;
+    static QList<NaybrrItem*> db;
 
     // for constructing from db call
-    Item(int id);
-    Item(QObject *parent=nullptr);
-    Item(int, int, float, QString, QString, QString);
+    NaybrrItem(int id);
+    NaybrrItem(QObject *parent=nullptr);
+    NaybrrItem(int, int, float, QString, QString, QString);
 
     bool mImageReady;
     QFile* mFile;
@@ -50,6 +51,8 @@ public:
     void downloadImage(const QString &url, const QString &filePath);
     void onImageReady(QNetworkReply * reply);
 
+
+
 private:
     int mItemId;
     int mAccountId;
@@ -58,6 +61,7 @@ private:
     QString mItemName;
     QString mItemDesc;
     QString mImagePath;
+
 
 
 signals:

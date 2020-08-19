@@ -1,11 +1,11 @@
-#include "item.h"
-Item::Item(QObject* parent):
+#include "NaybrrItem.h"
+NaybrrItem::NaybrrItem(QObject* parent):
     QObject(parent)
 {
 
 }
 
-Item::Item(int id, int quantity, float price, QString name, QString desc, QString imPath):
+NaybrrItem::NaybrrItem(int id, int quantity, float price, QString name, QString desc, QString imPath):
     mItemId(id),
     mItemQuantity(quantity),
     mItemPrice(price),
@@ -15,17 +15,19 @@ Item::Item(int id, int quantity, float price, QString name, QString desc, QStrin
 
 {}
 
-Item::Item(int id){
+
+
+NaybrrItem::NaybrrItem(int id){
     this->mItemId = id;
-    this->mItemName = Item::db[id]->getName();
-    this->mItemDesc = Item::db[id]->getDesc();
-    this->mItemPrice = Item::db[id]->getPrice();
-    this->mItemQuantity = Item::db[id]->getQuantity();
-    this->mImagePath = Item::db[id]->getImagePath();
+    this->mItemName = NaybrrItem::db[id]->getName();
+    this->mItemDesc = NaybrrItem::db[id]->getDesc();
+    this->mItemPrice = NaybrrItem::db[id]->getPrice();
+    this->mItemQuantity = NaybrrItem::db[id]->getQuantity();
+    this->mImagePath = NaybrrItem::db[id]->getImagePath();
 }
 
 
-void Item::downloadImage(const QString &url, const QString &filePath){
+void NaybrrItem::downloadImage(const QString &url, const QString &filePath){
     if(!mImageReady){
         return;
     }
@@ -50,7 +52,7 @@ void Item::downloadImage(const QString &url, const QString &filePath){
 
 }
 
-void Item::onImageReady(QNetworkReply *reply){
+void NaybrrItem::onImageReady(QNetworkReply *reply){
     if(!mFile->isWritable()){
         mImageReady = true;
         return;
@@ -66,16 +68,18 @@ The following init() function is used to fill the "db"
 which is just a list for the time being.
 */
 
-QList<Item*> init(){
-    QList<Item*> tmp;
-    tmp.append( new Item(0, 2, 4.99, "Salt", "Lorem Ipsum", ""));
-    tmp.append( new Item(1, 2, 4.99, "Sugar", "Lorem Ipsum", ""));
-    tmp.append( new Item(2, 2, 4.99, "Water", "Lorem Ipsum", ""));
+QList<NaybrrItem*> init(){
+    QList<NaybrrItem*> tmp;
+    tmp.append( new NaybrrItem(0, 2, 4.99, "Salt", "Lorem Ipsum", ""));
+    tmp.append( new NaybrrItem(1, 2, 4.99, "Sugar", "Lorem Ipsum", ""));
+    tmp.append( new NaybrrItem(2, 2, 4.99, "Water", "Lorem Ipsum", ""));
     return tmp;
 }
 
-QList<Item*> Item::db(init());
+QList<NaybrrItem*> NaybrrItem::db(init());
 
-Item* Item::findItemInDB(int id){
-    return new Item(id);
+NaybrrItem* NaybrrItem::findItemInDB(int id){
+    return new NaybrrItem(id);
 }
+
+

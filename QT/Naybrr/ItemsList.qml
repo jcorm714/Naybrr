@@ -2,11 +2,12 @@ import QtQuick 2.4
 import QtQuick.Controls 2.15
 import Naybrr 1.0
 ItemsListForm {
-    Item{
+    NaybrrItem{
         id: itemRef
     }
 
     listView.model: ListModel {
+
         ListElement {
             db_id: 0
             name: "Salt"
@@ -43,12 +44,12 @@ ItemsListForm {
         onClicked:{
                 let i = itemRef.findItemInDB(db_id);
                 let itemView = Qt.createComponent("DetailedItem.qml")
-                console.log(i.price)
+                console.log(i.name, i.quantity, i.desc, i.price)
                 let propertyValues = {
                                         imgPath: i.imagePath,
                                         itemName: i.name,
                                         itemQuantity: "Quantity: " + i.quantity,
-                                        itemDes: i.desc,
+                                        itemDesc: i.desc,
                                         itemPrice: "$" + make_pretty_decimal(i.price),
 
                     }

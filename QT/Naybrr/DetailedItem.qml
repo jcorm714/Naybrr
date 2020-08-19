@@ -1,6 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
-//import Naybrr 1.0
+import Naybrr 1.0
 Item {
     width: 400
     height: 400
@@ -14,15 +14,15 @@ Item {
     property var funcReturn: null
     property int db_id: -1
 
-    Item{
+    NaybrrItem{
         id:itemDB
     }
 
-//    Rectangle {
-//        id: rectangle
-//        color: "#ffffff"
-//        anchors.fill: parent
-//    }
+    Rectangle {
+        id: rectangle
+        color: "#ffffff"
+        anchors.fill: parent
+    }
 
     Image {
         id: imgItem
