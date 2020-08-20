@@ -16,6 +16,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         NaybrrItem.cpp \
+        itemlist.cpp \
+        itemmodel.cpp \
         main.cpp \
         user.cpp
 
@@ -34,6 +36,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     NaybrrItem.h \
+    itemlist.h \
+    itemmodel.h \
     user.h
 
 CONFIG += qmltypes
