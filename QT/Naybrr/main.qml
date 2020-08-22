@@ -3,6 +3,7 @@ import QtQuick.Controls 2.5
 import Naybrr 1.0
 
 ApplicationWindow {
+    id:window
     visible: true
     width: 640
     height: 480
@@ -170,8 +171,82 @@ ApplicationWindow {
 
     Component {
         id: appHub
-        AppHub {
-            maSettings.onClicked: stackView.push(settings)
+        AppHub{
+            Drawer{
+                id: drawer
+                width: 0.4 * window.width;
+                height: parent.height
+                x: 5
+                y:10
+
+//                Label{
+//                    text: "Navigation"
+//                    anchors.centerIn: parent
+//                    anchors.top: parent.topInset
+//                }
+                ListView {
+                    id: listView
+                    anchors.fill: parent
+
+                    model: ListModel {
+
+                            ListElement {
+                                name: "Settings"
+
+                            }
+                            ListElement {
+                                name: "Inventory"
+
+                            }
+                            ListElement {
+                                name: "Log out"
+
+                            }
+                        }
+                    delegate: ItemDelegate{
+                        x: 5
+                        width: parent.width
+                        height: 40
+                        onClicked: function() {
+                            console.log("NANI")
+
+                                switch(name){
+                                    case "Settings":
+                                        stackView.push(settings)
+                                       break;
+                                    case "Inventory":
+                                        console.log("Inventory")
+                                        break;
+                                    case "Log out":
+                                        console.log("Log out")
+                                        break;
+
+
+
+                                }
+                            drawer.close()
+
+                        }
+
+                        Row {
+                            id: row1
+
+
+                            Text {
+                                text: name
+
+                                font.bold: true
+
+                            }
+                        }
+                    }
+                }
+
+            }
+            maSettings.onClicked: drawer.open()
         }
+
+
+
     }
 }

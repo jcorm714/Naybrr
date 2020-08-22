@@ -20,6 +20,7 @@ Item {
         currentIndex: tabBar.currentIndex
 
         ItemsList {}
+        NaybrrTab {}
     }
 
     TextField {
@@ -44,23 +45,30 @@ Item {
         TabButton {
             text: qsTr("Items")
         }
+        TabButton {
+            text: qsTr("Naybrrs")
+        }
     }
 
     Image {
         id: image
-        x: 0
+        x: 8
         y: 19
-        width: 59
+        width: 45
         height: 41
-        source: "qrc:/qtquickplugin/images/template_image.png"
+        source: "open-menu.svg"
         fillMode: Image.PreserveAspectFit
-    }
 
-    MouseArea {
-        id: maSettings
-        x: 6
-        y: 26
-        width: 48
-        height: 27
+        MouseArea {
+            id: maSettings
+            anchors.fill: parent
+        }
     }
 }
+
+/*##^##
+Designer {
+    D{i:9;anchors_height:27;anchors_width:48;anchors_x:6;anchors_y:26}
+}
+##^##*/
+
