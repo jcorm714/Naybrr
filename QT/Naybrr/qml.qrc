@@ -20,6 +20,11 @@
         <file>open-menu.svg</file>
         <file>ItemsListNaybrrTab.qml</file>
         <file>ItemsListNaybrrTabForm.ui.qml</file>
+        <file>InventoryHub.qml</file>
+        <file>InventoryHubForm.ui.qml</file>
+        <file>AddItem.qml</file>
+        <file>AddItemForm.ui.qml</file>
+        <file>UpdateItem.qml</file>
     </qresource>
     <qresource prefix="/icons"/>
 </RCC>

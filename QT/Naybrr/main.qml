@@ -170,6 +170,20 @@ ApplicationWindow {
     }
 
     Component {
+        id: inventory
+        InventoryHub{
+            btnReturn.onClicked: stackView.pop()
+        }
+    }
+
+    Component{
+        id: addItem
+        AddItem{
+            btnReturn.onClicked: stackView.pop()
+        }
+    }
+
+    Component {
         id: appHub
         AppHub{
             Drawer{
@@ -198,6 +212,11 @@ ApplicationWindow {
                                 name: "Inventory"
 
                             }
+
+                            ListElement{
+                                name: "Add Item"
+                            }
+
                             ListElement {
                                 name: "Log out"
 
@@ -208,17 +227,19 @@ ApplicationWindow {
                         width: parent.width
                         height: 40
                         onClicked: function() {
-                            console.log("NANI")
 
                                 switch(name){
                                     case "Settings":
                                         stackView.push(settings)
                                        break;
                                     case "Inventory":
-                                        console.log("Inventory")
+                                        stackView.push(inventory)
+                                        break;
+                                    case "Add Item":
+                                        stackView.push(addItem)
                                         break;
                                     case "Log out":
-                                        console.log("Log out")
+                                        stackView.pop();
                                         break;
 
 
