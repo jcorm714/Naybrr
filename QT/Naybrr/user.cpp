@@ -1,4 +1,5 @@
 #include "user.h"
+#include <QtSql>
 User::User(QObject *parent):
     QObject(parent)
 
@@ -64,6 +65,22 @@ int User::itemCount(QQmlListProperty<Item>* list){
 
 
 //TODO: actually connect to the database
+bool createConnection()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("localhost");
+    db.setDatabaseName("test");
+    db.setUserName("root");
+    db.setPassword("******");
+
+    if (!db.open()){
+       QObject::tr("Error"),
+       db.lastError().text();
+       return false;
+    }
+    return true;
+}
+
 bool User::login(QString name, QString password){
     return (name == "test" && password == "test");
 }
