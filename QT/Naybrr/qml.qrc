@@ -11,11 +11,20 @@
         <file>AppHubForm.ui.qml</file>
         <file>ItemsList.qml</file>
         <file>ItemsListForm.ui.qml</file>
-
         <file>DetailedItem.qml</file>
         <file>DetailedItemForm.ui.qml</file>
         <file>UserSettings.qml</file>
         <file>UserSettingsForm.ui.qml</file>
-
+        <file>NaybrrTab.qml</file>
+        <file>NaybrrTabForm.ui.qml</file>
+        <file>open-menu.svg</file>
+        <file>ItemsListNaybrrTab.qml</file>
+        <file>ItemsListNaybrrTabForm.ui.qml</file>
+        <file>InventoryHub.qml</file>
+        <file>InventoryHubForm.ui.qml</file>
+        <file>AddItem.qml</file>
+        <file>AddItemForm.ui.qml</file>
+        <file>UpdateItem.qml</file>
     </qresource>
+    <qresource prefix="/icons"/>
 </RCC>
