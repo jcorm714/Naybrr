@@ -1,10 +1,13 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
 import Naybrr 1.0
-ItemsListForm {
+ItemsListNaybrrTabForm {
+
     NaybrrItem{
         id: itemRef
     }
+
+    btnPleaseJustWork.onClicked: stack.pop();
 
 
     listView.model: ListModel {

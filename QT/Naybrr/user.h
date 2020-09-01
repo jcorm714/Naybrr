@@ -4,7 +4,7 @@
 #include<QObject>
 #include<QtQml>
 #include<QtDebug>
-#include "item.h"
+#include "NaybrrItem.h"
 
 
 class User: public QObject
@@ -18,7 +18,7 @@ class User: public QObject
     Q_PROPERTY(QString city READ getCity WRITE setCity)
     Q_PROPERTY(QString state READ getState WRITE setState)
     Q_PROPERTY(QString zip READ getZip WRITE setState)
-    Q_PROPERTY(QQmlListProperty<Item> inventory READ getInventory)
+    Q_PROPERTY(QQmlListProperty<NaybrrItem> inventory READ getInventory)
     QML_ELEMENT
 public:
     User(QObject *parent=nullptr);
@@ -31,11 +31,16 @@ public:
     Q_INVOKABLE static bool registerUser(QString uname, QString pass, QString email,
                                          QString addr1, QString addr2, QString city,
                                          QString state, QString zip);
-    void appendItem(Item* i);
-    Item *item(int) const;
+    Q_INVOKABLE static bool updateUser(int id, User*);
+    Q_INVOKABLE static bool updateUser(int id, QString uname, QString pass, QString email,
+                                         QString addr1, QString addr2, QString city,
+                                         QString state, QString zip);
+
+    void appendItem(NaybrrItem* i);
+    NaybrrItem *item(int) const;
     int itemCount() const;
     void clearItems();
-    void replaceItem(int, Item*);
+    void replaceItem(int, NaybrrItem*);
     void removeLastItem();
 
     //gets
@@ -48,7 +53,7 @@ public:
     QString getCity(){return mCity;}
     QString getState(){return mState;}
     QString getZip(){return mZip;}
-    QQmlListProperty<Item> getInventory();
+    QQmlListProperty<NaybrrItem> getInventory();
 
     //Sets
     void setUsername(QString newValue){mUserName = newValue;}
@@ -70,14 +75,14 @@ private:
     QString mCity;
     QString mState;
     QString mZip;
-    QVector<Item*> items;
+    QVector<NaybrrItem*> items;
 
-    static void appendItem(QQmlListProperty<Item>*, Item*);
-    static int itemCount(QQmlListProperty<Item>*);
-    static void clearItems(QQmlListProperty<Item>*);
-    static void replaceItem(QQmlListProperty<Item>*, int, Item*);
-    static void removeLastItem(QQmlListProperty<Item>*);
-    static Item* item(QQmlListProperty<Item>*, int);
+    static void appendItem(QQmlListProperty<NaybrrItem>*, NaybrrItem*);
+    static int itemCount(QQmlListProperty<NaybrrItem>*);
+    static void clearItems(QQmlListProperty<NaybrrItem>*);
+    static void replaceItem(QQmlListProperty<NaybrrItem>*, int, NaybrrItem*);
+    static void removeLastItem(QQmlListProperty<NaybrrItem>*);
+    static NaybrrItem* item(QQmlListProperty<NaybrrItem>*, int);
 
 
 

@@ -9,6 +9,7 @@ Item {
     property alias element: element
     property alias swipeView: swipeView
     property alias tabBar: tabBar
+    property alias maSettings: maSettings
 
     SwipeView {
         id: swipeView
@@ -19,13 +20,14 @@ Item {
         currentIndex: tabBar.currentIndex
 
         ItemsList {}
+        NaybrrTab {}
     }
 
     TextField {
         id: txtSearch
-        x: 14
+        x: 59
         y: 19
-        width: 368
+        width: 323
         height: 40
         placeholderText: qsTr("Search")
     }
@@ -43,5 +45,30 @@ Item {
         TabButton {
             text: qsTr("Items")
         }
+        TabButton {
+            text: qsTr("Naybrrs")
+        }
+    }
+
+    Image {
+        id: image
+        x: 8
+        y: 19
+        width: 45
+        height: 41
+        source: "open-menu.svg"
+        fillMode: Image.PreserveAspectFit
+
+        MouseArea {
+            id: maSettings
+            anchors.fill: parent
+        }
     }
 }
+
+/*##^##
+Designer {
+    D{i:9;anchors_height:27;anchors_width:48;anchors_x:6;anchors_y:26}
+}
+##^##*/
+

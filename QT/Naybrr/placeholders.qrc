@@ -5,4 +5,5 @@
         <file alias="cinnamon.jpg">D:/Downloads/cinnamon.jpg</file>
         <file alias="salt.jpg">D:/Downloads/salt.jpg</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

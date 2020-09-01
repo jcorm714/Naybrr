@@ -5,7 +5,7 @@ User::User(QObject *parent):
 
 {}
 
-void User::appendItem(Item *i){
+void User::appendItem(NaybrrItem *i){
     items.append(i);
 }
 
@@ -13,7 +13,7 @@ int User::itemCount() const{
     return items.count();
 }
 
-Item *User::item(int ndx) const{
+NaybrrItem *User::item(int ndx) const{
     return items.at(ndx);
 }
 
@@ -21,7 +21,7 @@ void User::clearItems(){
     items.clear();
 }
 
-void User::replaceItem(int ndx, Item * i){
+void User::replaceItem(int ndx, NaybrrItem * i){
     items[ndx] = i;
 }
 
@@ -29,7 +29,7 @@ void User::removeLastItem(){
     items.removeLast();
 }
 
-QQmlListProperty<Item> User::getInventory(){
+QQmlListProperty<NaybrrItem> User::getInventory(){
 
     return { this, this,
             &User::appendItem,
@@ -41,25 +41,25 @@ QQmlListProperty<Item> User::getInventory(){
     };
 }
 
-void User::appendItem(QQmlListProperty<Item>* list, Item* i){
+void User::appendItem(QQmlListProperty<NaybrrItem>* list, NaybrrItem* i){
     reinterpret_cast<User*>(list->data)->appendItem(i);
 }
 
-void User::clearItems(QQmlListProperty<Item>* list){
+void User::clearItems(QQmlListProperty<NaybrrItem>* list){
     reinterpret_cast<User*>(list->data)->clearItems();
 }
 
-void User::replaceItem(QQmlListProperty<Item>* list, int ndx, Item* i)
+void User::replaceItem(QQmlListProperty<NaybrrItem>* list, int ndx, NaybrrItem* i)
 {
     reinterpret_cast<User*>(list->data)->replaceItem(ndx,i);
 }
-void User::removeLastItem(QQmlListProperty<Item>* list){
+void User::removeLastItem(QQmlListProperty<NaybrrItem>* list){
     reinterpret_cast<User*>(list->data)->removeLastItem();
 }
-Item* User::item(QQmlListProperty<Item>* list, int ndx){
+NaybrrItem* User::item(QQmlListProperty<NaybrrItem>* list, int ndx){
     return reinterpret_cast<User*>(list->data)->item(ndx);
 }
-int User::itemCount(QQmlListProperty<Item>* list){
+int User::itemCount(QQmlListProperty<NaybrrItem>* list){
     return reinterpret_cast<User*>(list->data)->itemCount();
 }
 
@@ -97,7 +97,30 @@ bool User::registerUser(QString uname, QString pass, QString email,
 }
 
 bool User::registerUser(User* u){
-    registerUser(u->getUsername(), u->getPassword(), u->getEmail(),
+    return registerUser(u->getUsername(), u->getPassword(), u->getEmail(),
                  u->getAddr1(), u->getAddr2(), u->getCity(),
                  u->getState(),u->getZip());
+
 }
+
+bool User::updateUser(int id, User * u){
+    return updateUser(id ,u->getUsername(), u->getPassword(), u->getEmail(),
+                 u->getAddr1(), u->getAddr2(), u->getCity(),
+                 u->getState(),u->getZip());
+
+
+}
+
+bool User::updateUser(int id, QString uname,
+                      QString pass, QString email, QString addr1, QString addr2,
+                      QString city, QString state, QString zip)
+{
+
+
+    qDebug() << id << ' ' << uname << ' ' << pass << ' ' << email << '\n'
+           << addr1 << ' ' << addr2 << '\n'
+           << city << ' ' << state << ' ' << zip;
+
+
+}
+
