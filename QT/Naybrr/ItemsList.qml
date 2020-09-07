@@ -15,6 +15,14 @@ Item {
         initialItem: listView
     }
 
+    function make_pretty_decimal(x){
+      let y = ((x * 100) + 0.5)/100
+      y = y.toString()
+      let deciIdx = y.indexOf(".")
+      return  y.substr(0, deciIdx + 3)
+
+    }
+
     ListView {
         id: listView
         anchors.fill: parent
@@ -36,20 +44,24 @@ Item {
             width: parent.width
             height: 40
             onClicked: {
-                let i = itemRef.findItemInDB(db_id)
-                let itemView = Qt.createComponent("DetailedItem.qml")
-                console.log(i.name, i.quantity, i.desc, i.price)
-                let propertyValues = {
-                    "imgPath": i.imagePath,
-                    "itemName": i.name,
-                    "itemQuantity": "Quantity: " + i.quantity,
-                    "itemDesc": i.desc,
-                    "itemPrice": "$" + make_pretty_decimal(i.price)
-                }
-                let obj = itemView.createObject(stackView, propertyValues)
-                //               obj.btnReturn.onClicked = function(){ stackView.pop()}
-                //               obj.btnPurchase.onClicked = function() {console.log("Purchased Item");}
-                stackView.push(obj)
+                RequestHelper.getItem(function(data){
+                    let itemView = Qt.createComponent("DetailedItem.qml")
+
+                    let propertyValues = {
+                        "db_id": data["db_id"],
+                        "imgPath": data["imPath"],
+                        "itemName": data["name"],
+                        "itemQuantity": "Quantity: " + data["quantity"],
+                        "itemDesc": data["desc"],
+                        "itemPrice": "$" + data["price"]
+                    }
+                    let obj = itemView.createObject(stackView, propertyValues)
+                    //               obj.btnReturn.onClicked = function(){ stackView.pop()}
+                    //               obj.btnPurchase.onClicked = function() {console.log("Purchased Item");}
+                    stackView.push(obj)
+
+                })
+
             }
 
             Row {
