@@ -10,6 +10,7 @@ Item {
     property alias swipeView: swipeView
     property alias tabBar: tabBar
     property alias maSettings: maSettings
+    property alias txtSearch: txtSearch
 
     SwipeView {
         id: swipeView
