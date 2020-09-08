@@ -1,17 +1,16 @@
-//retreives a list of items from the database
-//TODO: add parameters to filter by search and zipcode
-function getItemList(processData){
+function openRequest(method, url, callback){
+
     let xhr = new XMLHttpRequest();
     let data;
-    xhr.open("GET","http://localhost:8080/items")
+    xhr.open(method, url)
     xhr.send()
 
     xhr.onload = function(event){
         if(xhr.status !== 200){
-            console.log("invalide or no data returned")
+            console.log("invalid or no data returned")
             data = []
         } else {
-            processData(JSON.parse(xhr.response))
+            callback(JSON.parse(xhr.response))
         }
     }
 
@@ -19,30 +18,29 @@ function getItemList(processData){
         console.error("request failed")
         data = []
     }
-
-    return data
 }
 
+/********************************************************
+*
+*   Below are wrappers for calling different APIs,
+*   each of them has a specific url it attends to
+*   so any changes to stuff like parameters gets made there
+*/
 
-function getItem(processData){
-    let xhr = new XMLHttpRequest();
-    let data;
-    xhr.open("GET","http://localhost:8080/oneitem")
-    xhr.send()
 
-    xhr.onload = function(event){
-        if(xhr.status !== 200){
-            console.log("invalide or no data returned")
-            data = []
-        } else {
-            processData(JSON.parse(xhr.response))
-        }
-    }
+//retreives a list of items from the database
+//TODO: add parameters to filter by search and zipcode
+function getItemList(callback){
+    let url = "http://localhost:8080/items"
+    openRequest("GET", url,  callback)
+}
 
-    xhr.onerror = function(event){
-        console.error("request failed")
-        data = []
-    }
-
-    return data
+//gets a singular item from the database
+function getItem(callback){
+    let url = "http://localhost:8080/oneitem"
+    openRequest("GET", url, callback)
+}
+function getUsers(callback){
+    let url = "http://localhost:8080/users";
+    openRequest("GET", url, callback)
 }
