@@ -7,7 +7,7 @@ Item {
     height: 400
     property alias listView: listView
     property alias stackView: stackView
-    property alias btnPleaseJustWork: btnPleaseJustWork
+    property alias btnReturn: btnReturn
 
     StackView {
         id: stackView
@@ -18,15 +18,12 @@ Item {
     Item {
         id: itemsList
         Button {
-            id: btnPleaseJustWork
+            id: btnReturn
             x: 16
             y: 14
             width: 363
             height: 40
             text: qsTr("Return")
-            enabled: true
-            visible: true
-            wheelEnabled: true
         }
         ListView {
             id: listView
