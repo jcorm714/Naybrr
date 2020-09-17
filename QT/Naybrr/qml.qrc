@@ -25,6 +25,8 @@
         <file>AddItem.qml</file>
         <file>AddItemForm.ui.qml</file>
         <file>UpdateItem.qml</file>
+        <file>Cart.qml</file>
+        <file>CartForm.ui.qml</file>
     </qresource>
     <qresource prefix="/icons"/>
 </RCC>
