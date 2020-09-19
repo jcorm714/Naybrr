@@ -52,11 +52,10 @@ ItemsListForm {
                                         itemQuantity: "Quantity: " + i.quantity,
                                         itemDesc: i.desc,
                                         itemPrice: "$" + make_pretty_decimal(i.price),
+                                        db_id: db_id
 
                     }
                 let obj = itemView.createObject(stackView, propertyValues)
-//               obj.btnReturn.onClicked = function(){ stackView.pop()}
-//               obj.btnPurchase.onClicked = function() {console.log("Purchased Item");}
                 stackView.push(obj)
         }
 

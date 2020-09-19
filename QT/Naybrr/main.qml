@@ -221,6 +221,9 @@ ApplicationWindow {
                                 name: "Log out"
 
                             }
+                            ListElement {
+                                name: "Clear Cart"
+                            }
                         }
                     delegate: ItemDelegate{
                         x: 5
@@ -241,6 +244,10 @@ ApplicationWindow {
                                     case "Log out":
                                         stackView.pop();
                                         break;
+                                    case "Clear Cart":
+                                        Cart.dropCreateDatabase();
+                                        break;
+
 
 
 
