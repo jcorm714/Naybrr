@@ -2,6 +2,8 @@ import QtQuick 2.4
 import QtQuick.Controls 2.15
 import Naybrr 1.0
 Item {
+
+
     width: 400
     height: 400
 
@@ -54,8 +56,15 @@ Item {
         height: 75
         text: qsTr("Purchase")
         onClicked: function(){
-                  // let item = itemDB.findItemInDB(db_id)
-                    console.log("item")
+
+                   console.log(db_id)
+
+                   if(!Cart.isItemInCart(db_id))
+                   {
+                        Cart.addItemToCart(db_id);
+                   } else {
+                       console.log("Item in cart already")
+                   }
         }
     }
 
