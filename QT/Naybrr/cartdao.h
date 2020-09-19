@@ -12,11 +12,15 @@ class CartDAO : public QObject
 public:
     explicit CartDAO(QObject *parent = nullptr);
     Q_INVOKABLE QList<int> getItemIdsInCart();
+    Q_INVOKABLE bool isItemInCart(int);
+    Q_INVOKABLE int numberOfItemsInCart();
+
 
 
 
 public slots:
         void addItemToCart(int itemId);
+        void removeItemFromCart(int itemId);
         void dropCreateDatabase();
 };
 

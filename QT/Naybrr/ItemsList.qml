@@ -52,7 +52,7 @@ ItemsListForm {
                                         itemQuantity: "Quantity: " + i.quantity,
                                         itemDesc: i.desc,
                                         itemPrice: "$" + make_pretty_decimal(i.price),
-                                        //db_id: db_id
+                                        db_id: db_id
 
                     }
                 let obj = itemView.createObject(stackView, propertyValues)

@@ -21,6 +21,7 @@ Item {
 
         ItemsList {}
         NaybrrTab {}
+        CartItems {}
     }
 
     TextField {
@@ -48,6 +49,9 @@ Item {
         TabButton {
             text: qsTr("Naybrrs")
         }
+        TabButton {
+            text: qsTr("Cart")
+        }
     }
 
     Image {
@@ -66,9 +70,5 @@ Item {
     }
 }
 
-/*##^##
-Designer {
-    D{i:9;anchors_height:27;anchors_width:48;anchors_x:6;anchors_y:26}
-}
-##^##*/
+
 

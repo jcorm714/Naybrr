@@ -56,10 +56,15 @@ Item {
         height: 75
         text: qsTr("Purchase")
         onClicked: function(){
-                  // let item = itemDB.findItemInDB(db_id)
-                    console.log(db_id)
-                   // cart.addItemToCart(db_id);
-                   Cart.addItemToCart(db_id);
+
+                   console.log(db_id)
+
+                   if(!Cart.isItemInCart(db_id))
+                   {
+                        Cart.addItemToCart(db_id);
+                   } else {
+                       console.log("Item in cart already")
+                   }
         }
     }
 
