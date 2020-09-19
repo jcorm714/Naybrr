@@ -10,7 +10,6 @@
         <file>AppHub.qml</file>
         <file>AppHubForm.ui.qml</file>
         <file>ItemsList.qml</file>
-        <file>ItemsListForm.ui.qml</file>
         <file>DetailedItem.qml</file>
         <file>DetailedItemForm.ui.qml</file>
         <file>UserSettings.qml</file>
@@ -25,6 +24,7 @@
         <file>AddItem.qml</file>
         <file>AddItemForm.ui.qml</file>
         <file>UpdateItem.qml</file>
+        <file>RequestHelper.js</file>
         <file>CartItems.qml</file>
         <file>CartForm.ui.qml</file>
     </qresource>

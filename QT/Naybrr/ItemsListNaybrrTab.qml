@@ -7,7 +7,7 @@ ItemsListNaybrrTabForm {
         id: itemRef
     }
 
-    btnPleaseJustWork.onClicked: stack.pop();
+    btnReturn.onClicked: stack.pop();
 
 
     listView.model: ListModel {
