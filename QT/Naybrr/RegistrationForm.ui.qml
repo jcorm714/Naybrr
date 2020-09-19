@@ -98,154 +98,154 @@ Item {
                 text: "---Choose State---"
             }
             ListElement {
-                text: "Alabama"
+                text: "AL"
             }
             ListElement {
-                text: "Alaska"
+                text: "AK"
             }
             ListElement {
-                text: "Arizona"
+                text: "AZ"
             }
             ListElement {
-                text: "Arkansas"
+                text: "AR"
             }
             ListElement {
-                text: "California"
+                text: "CA"
             }
             ListElement {
-                text: "Colorado"
+                text: "CO"
             }
             ListElement {
-                text: "Connecticut"
+                text: "CT"
             }
             ListElement {
-                text: "Delaware"
+                text: "DE"
             }
             ListElement {
-                text: "Florida"
+                text: "FL"
             }
             ListElement {
-                text: "Georgia"
+                text: "GA"
             }
             ListElement {
-                text: "Hawaii"
+                text: "HI"
             }
             ListElement {
-                text: "Idaho"
+                text: "ID"
             }
             ListElement {
-                text: "Illinois"
+                text: "IL"
             }
             ListElement {
-                text: "Indiana"
+                text: "IN"
             }
             ListElement {
-                text: "Iowa"
+                text: "IA"
             }
             ListElement {
-                text: "Kansas"
+                text: "KS"
             }
             ListElement {
-                text: "Kentucky"
+                text: "KY"
             }
             ListElement {
-                text: "Louisiana"
+                text: "LA"
             }
             ListElement {
-                text: "Maine"
+                text: "ME"
             }
             ListElement {
-                text: "Maryland"
+                text: "MD"
             }
             ListElement {
-                text: "Massachusetts"
+                text: "MA"
             }
             ListElement {
-                text: "Michigan"
+                text: "MI"
             }
             ListElement {
-                text: "Minnesota"
+                text: "MN"
             }
             ListElement {
-                text: "Mississippi"
+                text: "MS"
             }
             ListElement {
-                text: "Missouri"
+                text: "MO"
             }
             ListElement {
-                text: "Montana"
+                text: "MT"
             }
             ListElement {
-                text: "Nebraska"
+                text: "NE"
             }
             ListElement {
-                text: "Nevada"
+                text: "NV"
             }
             ListElement {
-                text: "New Hampshire"
+                text: "NH"
             }
             ListElement {
-                text: "New Jersey"
+                text: "NJ"
             }
             ListElement {
-                text: "New Mexico"
+                text: "NM"
             }
             ListElement {
-                text: "New York"
+                text: "NY"
             }
             ListElement {
-                text: "North Carolina"
+                text: "NC"
             }
             ListElement {
-                text: "North Dakota"
+                text: "ND"
             }
             ListElement {
-                text: "Ohio"
+                text: "OH"
             }
             ListElement {
-                text: "Oklahoma"
+                text: "OK"
             }
             ListElement {
-                text: "Oregon"
+                text: "OR"
             }
             ListElement {
-                text: "Pennsylvania"
+                text: "PA"
             }
             ListElement {
-                text: "Rhode Island"
+                text: "RI"
             }
             ListElement {
-                text: "South Carolina"
+                text: "SC"
             }
             ListElement {
-                text: "South Dakota"
+                text: "SD"
             }
             ListElement {
-                text: "Tennessee"
+                text: "TN"
             }
             ListElement {
-                text: "Texas"
+                text: "TX"
             }
             ListElement {
-                text: "Utah"
+                text: "UT"
             }
             ListElement {
-                text: "Vermont"
+                text: "VT"
             }
             ListElement {
-                text: "Virginia"
+                text: "VA"
             }
             ListElement {
-                text: "Washington"
+                text: "WA"
             }
             ListElement {
-                text: "West Virginia"
+                text: "WV"
             }
             ListElement {
-                text: "Wisconsin"
+                text: "WI"
             }
             ListElement {
-                text: "Wyoming"
+                text: "WY"
             }
         }
     }

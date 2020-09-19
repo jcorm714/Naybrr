@@ -1,8 +1,10 @@
 import QtQuick 2.12
 import QtQuick.Controls 2.5
+import "RequestHelper.js" as RequestHelper
 import Naybrr 1.0
 
 ApplicationWindow {
+    property int activeUserId: -1;
     id:window
     visible: true
     width: 640
@@ -23,23 +25,19 @@ ApplicationWindow {
         id: login
         LoginForm {
 
-            //returns true if the login/password are valid
-            function validateLogin() {
-                let uname = txtUsername.text
-                let pass = txtUsername.text
-
-                //the login function is defined in user.cpp
-                return tempUser.login(uname, pass)
-            }
-
             btnLogin.onClicked: {
-
-                let isValid = validateLogin()
-                if (isValid) {
-                    stackView.push(appHub)
+                let uname = txtUsername.text
+                let pass = txtPassword.text
+                let callback = function(data){
+                    if(data["accountid"] > 0){
+                        stackView.push(appHub)
+                        activeUserId = data["accountid"]
+                    } else {
+                        lblOut.text = "incorrect login";
+                    }
                 }
-
-                //lblOut.text = (isValid)? "success": "incorrect login";
+                pass = Util.hashPassword(pass)
+                RequestHelper.login(callback, uname, pass)
             }
 
             btnRegister.onClicked: {
@@ -59,8 +57,9 @@ ApplicationWindow {
                 let email = txtEmail.text
                 let addr1 = txtAddr1.text
                 let addr2 = txtAddr2.text
-                let state = cbState.CurrentText
+                let state = cbState.currentText
                 let zip = txtZip.text
+
 
                 let errormsg = ""
                 if (!username.length) {
@@ -98,7 +97,7 @@ ApplicationWindow {
                 let a = txtAddr1.text
                 let a2 = txtAddr2.text
                 let c = txtCity.text
-                let s = cbState.CurrentText
+                let s = cbState.currentText
                 let z = txtZip.text
                 let user = Qt.createComponent(User)
                 user.username = u
@@ -123,10 +122,20 @@ ApplicationWindow {
                     lblErrors.text = errorMsg
                 } else {
                     let u = create_user()
-                    tempUser.registerUser(u.username, u.password, u.email,
-                                          u.addr1, u.addr2, u.city,
-                                          u.state, u.zip)
-                    stackView.pop()
+                    u.password = Util.hashPassword(u.password);
+                    let callback = function(data){
+                        console.log("user: ", data["accountid"])
+                        if(data["username"].length > 0)
+                        {
+                            stackView.pop();
+                        } else {
+                            console.log("an error registering occurred")
+                        }
+
+                    }
+
+                    RequestHelper.registerUser(callback, u)
+
                 }
             }
         }
@@ -193,11 +202,6 @@ ApplicationWindow {
                 x: 5
                 y:10
 
-//                Label{
-//                    text: "Navigation"
-//                    anchors.centerIn: parent
-//                    anchors.top: parent.topInset
-//                }
                 ListView {
                     id: listView
                     anchors.fill: parent

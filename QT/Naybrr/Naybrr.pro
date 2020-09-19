@@ -19,7 +19,8 @@ SOURCES += \
         NaybrrItem.cpp \
         cartdao.cpp \
         main.cpp \
-        user.cpp
+        user.cpp \
+        util.cpp
 
 RESOURCES += qml.qrc
 
@@ -37,7 +38,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     NaybrrItem.h \
     cartdao.h \
-    user.h
+    user.h \
+    util.h
 
 CONFIG += qmltypes
 QML_IMPORT_NAME = Naybrr
