@@ -28,8 +28,6 @@ function openRequest(method, url, callback){
 */
 
 
-//retreives a list of items from the database
-//TODO: add parameters to filter by search and zipcode
 function getItemList(callback){
     let url = "http://localhost:8080/items"
     openRequest("GET", url,  callback)
@@ -73,5 +71,19 @@ function insertItem(callback, nItem){
 
     openRequest("GET", encodeURI(url), callback);
 
+}
+
+function getUserInventory(callback, userId){
+    let url = `https://naybrr.herokuapp.com/neighbor?function=neighbor&accountId=${userId}`
+    console.log("Attempting to retreive user inventory")
+    console.log("Requesting for: " , url)
+    openRequest("GET", encodeURI(url), callback)
+}
+
+function findItem(callback, itemId){
+    let url =  `https://naybrr.herokuapp.com/item?function=find_item&itemId=${itemId}`
+    console.log("Attempting to find item")
+    console.log("Requesting for: ", url)
+    openRequest("GET", encodeURI(url), callback)
 }
 

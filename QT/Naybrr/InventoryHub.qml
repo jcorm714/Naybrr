@@ -1,18 +1,14 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
+import "RequestHelper.js" as RequestHelper
 import Naybrr 1.0
-
 
 Item {
     property alias btnReturn: btnReturn
     property alias listView: listView
+    property int uId: -1
     width: 400
     height: 400
-
-    NaybrrItem{
-        id: itemRef
-    }
-
 
     StackView {
         id: stack
@@ -33,25 +29,16 @@ Item {
             height: 293
 
             model: ListModel {
+                id: listModel
+            }
 
-                ListElement {
-                    db_id: 0
-                    name: "Salt"
-                    desc: "Lorem Ipsum"
-                    price: "$4.99"
+            Component.onCompleted: {
+                let callback = function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        listModel.append(data[i])
+                    }
                 }
-                ListElement {
-                    db_id: 1
-                    name: "Second"
-                    desc: "Lorem Ipsum"
-                    price: "$4.99"
-                }
-                ListElement {
-                    db_id: 2
-                    name: "Third"
-                    desc: "Lorem Ipsum"
-                    price: "$4.99"
-                }
+                RequestHelper.getUserInventory(callback, uId)
             }
 
             delegate: ItemDelegate {
@@ -59,39 +46,49 @@ Item {
                 width: parent.width
                 height: 40
                 onClicked: {
-                    function make_pretty_decimal(x){
-                      let y = ((x * 100) + 0.5)/100
-                      y = y.toString()
-                      let deciIdx = y.indexOf(".")
-                      return  y.substr(0, deciIdx + 3)
+                    function createPage(comp, props){
+                        if(comp.status === Component.Ready){
+                            let obj = comp.createObject(stackView,props)
+                            stackView.push(obj);
+                        } else if (comp.status === Component.Error){
+                            console.log("Error has occurred")
+                            console.log(comp.errorString())
+                        }
+                    }
+
+                    let callback = function (data) {
+                        let itemView = Qt.createComponent("UpdateItem.qml")
+
+                        let propertyValues = {
+                            "db_id": data["itemid"],
+                            "imgPath": data["imagepath"],
+                            "itemName": data["itemname"],
+                            "itemQuantity": "Quantity: " + data["quantity"],
+                            "itemDesc": data["description"],
+                            "itemPrice": "$" + data["price"]
+                        }
+                        if(itemView.status === Component.Ready){
+                            createPage(itemView, propertyValues)
+                        } else {
+                            itemView.statusChanged.connect(createPage(itemView, propertyValues))
+                        }
+
 
                     }
-                    let i = itemRef.findItemInDB(db_id)
-                    let itemView = Qt.createComponent("UpdateItem.qml")
-                    console.log(i.name, i.quantity, i.desc, i.price)
-                    let propertyValues = {
-                        "imgPath": i.imagePath,
-                        "itemName": i.name,
-                        "itemQuantity": "Quantity: " + i.quantity,
-                        "itemDesc": i.desc,
-                        "itemPrice": "$" + make_pretty_decimal(i.price)
-                    }
-                    let obj = itemView.createObject(stackView, propertyValues)
-                    //               obj.btnReturn.onClicked = function(){ stackView.pop()}
-                    //               obj.btnPurchase.onClicked = function() {console.log("Purchased Item");}
-                    stack.push(obj)
+
+                    RequestHelper.findItem(callback, itemid)
                 }
 
                 Row {
                     id: row1
 
                     Text {
-                        text: name
+                        text: itemname
 
                         font.bold: true
                     }
                     Text {
-                        text: desc
+                        text: description
 
                         font.bold: true
                     }
@@ -104,6 +101,5 @@ Item {
                 }
             }
         }
-
     }
 }
