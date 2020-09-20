@@ -1,5 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
+import "RequestHelper.js" as RequestHelper
+import Naybrr 1.0
 
 Item {
     property alias btnReturn: btnReturn
@@ -14,6 +16,7 @@ Item {
     property string itemDesc: ""
     property string itemPrice: "$4.99"
     property int db_id: -1
+
     width: 400
     height: 400
 
@@ -30,6 +33,7 @@ Item {
         x: 24
         y: 324
         text: qsTr("Return")
+        onClicked: stackView.pop()
     }
 
     Button {
@@ -38,6 +42,19 @@ Item {
         y: 324
         text: "Submit"
         checkable: true
+        onClicked: function(){
+            let valid = validate()
+            if(valid){
+                let callback = function(data){
+                    if(data["success"])
+                    {
+                        stackView.pop()
+                    }
+                }
+                let item = create_item();
+                RequestHelper.updateItem(callback, item)
+            }
+        }
     }
 
     Button {
@@ -46,6 +63,13 @@ Item {
         y: 324
         text: "Delete"
         checkable: true
+        onClicked: {
+            let callback = function(){
+                stackView.pop()
+            }
+
+            RequestHelper.deleteItem(callback, db_id);
+        }
     }
 
     TextField {
@@ -119,6 +143,7 @@ Item {
         item.price = txtPrice.text
         item.quantity = 1
         item.imgPath = txtImgpath.text
+        item.dbId = db_id
         return item;
     }
 }

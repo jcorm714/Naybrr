@@ -11,7 +11,7 @@
 class NaybrrItem : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(int dbId READ getId)
+    Q_PROPERTY(int dbId READ getId WRITE setItemId)
     Q_PROPERTY(int quantity READ getQuantity WRITE setQuantity)
     Q_PROPERTY(int accId READ getAccId WRITE setAccId)
     Q_PROPERTY(float price READ getPrice WRITE setPrice)
@@ -36,6 +36,7 @@ public:
     QFile* mFile;
     //gets and sets
     int getId() { return mItemId;}
+    void setItemId(int i){ mItemId = i;}
     int getQuantity() {return mItemQuantity;}
     int getAccId(){ return mAccountId;}
     void setAccId(int i){mAccountId = i;}

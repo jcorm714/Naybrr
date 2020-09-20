@@ -87,3 +87,21 @@ function findItem(callback, itemId){
     openRequest("GET", encodeURI(url), callback)
 }
 
+function deleteItem(callback, itemId){
+    let url= `https://naybrr.herokuapp.com/delete?function=delete_item&itemId=${itemId}`
+    console.log("Attemting to delete item")
+    console.log("Requesting for: ", url);
+    openRequest("GET", encodeURI(url), callback)
+}
+
+function updateItem(callback, nItem){
+    let url = `https://naybrr.herokuapp.com/updateItem?function=update_item&itemId=${nItem.dbId}&accountId=${nItem.accId}&`
+    url += `itemName=${nItem.name}&Price=${nItem.price}&quantity=${nItem.quantity}&`
+    url += `imgPath=${nItem.imgPath}&description=${nItem.desc}`
+    console.log("Attempting to update item")
+    console.log("Requsting for: ", url);
+    console.log("Encoded URL: ", encodeURI(url))
+    openRequest("GET", encodeURI(url), callback)
+
+}
+

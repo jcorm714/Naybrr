@@ -10,6 +10,16 @@ Item {
     width: 400
     height: 400
 
+    function refreshList(){
+        listModel.clear()
+        let callback = function (data) {
+            for (var i = 0; i < data.length; i++) {
+                listModel.append(data[i])
+            }
+        }
+        RequestHelper.getUserInventory(callback, uId)
+    }
+
     StackView {
         id: stack
         anchors.fill: parent
@@ -32,14 +42,7 @@ Item {
                 id: listModel
             }
 
-            Component.onCompleted: {
-                let callback = function (data) {
-                    for (var i = 0; i < data.length; i++) {
-                        listModel.append(data[i])
-                    }
-                }
-                RequestHelper.getUserInventory(callback, uId)
-            }
+            Component.onCompleted: refreshList()
 
             delegate: ItemDelegate {
                 x: 5
@@ -65,7 +68,7 @@ Item {
                             "itemName": data["itemname"],
                             "itemQuantity": "Quantity: " + data["quantity"],
                             "itemDesc": data["description"],
-                            "itemPrice": "$" + data["price"]
+                            "itemPrice": data["price"]
                         }
                         if(itemView.status === Component.Ready){
                             createPage(itemView, propertyValues)
