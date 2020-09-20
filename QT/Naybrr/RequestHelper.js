@@ -71,7 +71,7 @@ function insertItem(callback, nItem){
     console.log("Attempting to upload item")
     console.log("Reguesting for: ", url);
 
-    openRequest("GET", url, callback);
+    openRequest("GET", encodeURI(url), callback);
 
 }
 

@@ -13,6 +13,7 @@ class NaybrrItem : public QObject
     Q_OBJECT
     Q_PROPERTY(int dbId READ getId)
     Q_PROPERTY(int quantity READ getQuantity WRITE setQuantity)
+    Q_PROPERTY(int accId READ getAccId WRITE setAccId)
     Q_PROPERTY(float price READ getPrice WRITE setPrice)
     Q_PROPERTY(QString name READ getName WRITE setName)
     Q_PROPERTY(QString desc READ getDesc WRITE setDesc)
@@ -36,6 +37,8 @@ public:
     //gets and sets
     int getId() { return mItemId;}
     int getQuantity() {return mItemQuantity;}
+    int getAccId(){ return mAccountId;}
+    void setAccId(int i){mAccountId = i;}
     void setQuantity(int v) {mItemQuantity = v;}
     float getPrice(){return mItemPrice;}
     void setPrice(float v){mItemPrice = v;}

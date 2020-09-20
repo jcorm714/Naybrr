@@ -2,11 +2,12 @@ import QtQuick 2.4
 import QtQuick.Controls 2.15
 import Naybrr 1.0
 import QtQuick.Dialogs 1.2
+import "RequestHelper.js" as RequestHelper
 
 
 Item {
     property alias btnReturn: btnReturn
-    property int activeUserId: -1
+    property int uId: -1
     width: 400
     height: 400
 
@@ -31,6 +32,18 @@ Item {
         y: 324
         text: "Submit"
         checkable: true
+        onClicked: {
+            let callback = function(data){
+                console.log(data)
+                btnReturn.clicked()
+            }
+
+            let valid = validate()
+            if(valid){
+                let item = create_item()
+                RequestHelper.insertItem(callback, item)
+            }
+        }
     }
 
     TextField {
@@ -63,12 +76,14 @@ Item {
     }
 
 
-    Button {
-        id: btnImage
+    TextField {
+        id: txtImgpath
         x: 24
         y: 220
-        text: qsTr("Image")
-        onClicked: fileDialog.visible = true
+        placeholderText: qStr("Image Link")
+        height: 40
+        width: 157
+
     }
 
     FileDialog{
@@ -101,7 +116,7 @@ Item {
     }
 
     function  validate(){
-        errors = ""
+        let errors = ""
         if(!txtName.length) errors += "Name is required ";
         if(!txtDesc.length) errors += "Description is required";
         if(!txtPrice.length) errors += "Price is required"
@@ -115,12 +130,12 @@ Item {
 
     function create_item(){
         let item = Qt.createComponent(NaybrrItem)
-        item.name = txtName
+        item.name = txtName.text
         item.accId = activeUserId
-        item.desc = txtDesc
-        item.price = txtPrice
+        item.desc = txtDesc.text
+        item.price = txtPrice.text
         item.quantity = 1
-        item.imgPath = lblFilePath.text
+        item.imgPath = txtImgpath.text
         return item;
     }
 }

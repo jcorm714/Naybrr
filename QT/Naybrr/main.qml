@@ -188,6 +188,7 @@ ApplicationWindow {
     Component{
         id: addItem
         AddItem{
+            uId: activeUserId
             btnReturn.onClicked: stackView.pop()
         }
     }

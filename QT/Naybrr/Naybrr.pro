@@ -46,3 +46,5 @@ HEADERS += \
 CONFIG += qmltypes
 QML_IMPORT_NAME = Naybrr
 QML_IMPORT_MAJOR_VERSION = 1
+
+ANDROID_ABIS = armeabi-v7a x86
