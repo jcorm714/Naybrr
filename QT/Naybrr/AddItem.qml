@@ -80,7 +80,7 @@ Item {
         id: txtImgpath
         x: 24
         y: 220
-        placeholderText: qStr("Image Link")
+        placeholderText: qsTr("Image Link")
         height: 40
         width: 157
 
