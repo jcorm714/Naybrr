@@ -1,8 +1,10 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
+import Naybrr 1.0
 
 Item {
     property alias btnReturn: btnReturn
+    property int activeUserId: -1
     width: 400
     height: 400
 
@@ -73,5 +75,35 @@ Item {
         width: 208
         height: 15
         font.pixelSize: 12
+    }
+
+    Text{
+        id: lblErrors
+        x: 25
+        y: 380
+    }
+
+    function  validate(){
+        errors = ""
+        if(!txtName.length) errors += "Name is required ";
+        if(!txtDesc.length) errors += "Description is required";
+        if(!txtPrice.length) errors += "Price is required"
+
+        if(errors.length){
+            lblErrors.text = errors
+            return false
+        }
+        return true;
+    }
+
+    function create_item(){
+        let item = Qt.createComponent(NaybrrItem)
+        item.name = txtName
+        item.accId = activeUserId
+        item.desc = txtDesc
+        item.price = txtPrice
+        item.quantity = 1
+        item.imgPath = lblFilePath.text
+        return item;
     }
 }
