@@ -6,6 +6,7 @@ Item {
     width: 400
 
     transformOrigin: Item.Center
+    property int activeUserId: -1
     property alias element: element
     property alias swipeView: swipeView
     property alias tabBar: tabBar
@@ -70,6 +71,3 @@ Item {
         }
     }
 }
-
-
-

@@ -64,3 +64,14 @@ function registerUser(callback, user)
     openRequest("GET", url, callback);
 
 }
+
+function insertItem(callback, nItem){
+    let url = `https://naybrr.herokuapp.com/newItem?function=add_item&accountId=${nItem.accId}`
+        url += `&itemName=${nItem.name}&Price=${nItem.price}&quantity=${nItem.quantity}&imgPath=${nItem.imgPath}&description=${nItem.desc}`
+    console.log("Attempting to upload item")
+    console.log("Reguesting for: ", url);
+
+    openRequest("GET", encodeURI(url), callback);
+
+}
+

@@ -1,8 +1,13 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
+import Naybrr 1.0
+import QtQuick.Dialogs 1.2
+import "RequestHelper.js" as RequestHelper
+
 
 Item {
     property alias btnReturn: btnReturn
+    property int uId: -1
     width: 400
     height: 400
 
@@ -27,6 +32,18 @@ Item {
         y: 324
         text: "Submit"
         checkable: true
+        onClicked: {
+            let callback = function(data){
+                console.log(data)
+                btnReturn.clicked()
+            }
+
+            let valid = validate()
+            if(valid){
+                let item = create_item()
+                RequestHelper.insertItem(callback, item)
+            }
+        }
     }
 
     TextField {
@@ -53,17 +70,34 @@ Item {
         y: 97
         width: 357
         height: 92
-        text: "Proin neque orci, dapibus quis orci a, auctor lobortis felis. Duis molestie vehicula eros. Sed quis pellentesque enim. Nam eget ipsum lacus. Morbi eget augue justo. Nulla et velit quis ipsum ullamcorper mollis eu quis felis. Sed bibendum ligula non euismod mattis. Donec mollis commodo nulla, ut maximus lacus eleifend quis. Nulla eget neque ac lectus luctus finibus a vitae risus. Nulla ultrices consectetur ante. Duis eget ex pretium, hendrerit ligula vitae, tristique orci."
         wrapMode: Text.WordWrap
         verticalAlignment: Text.AlignTop
-        placeholderText: qsTr("Text Area")
+        placeholderText: qsTr("Description")
     }
 
-    Button {
-        id: btnImage
+
+    TextField {
+        id: txtImgpath
         x: 24
         y: 220
-        text: qsTr("Image")
+        placeholderText: qsTr("Image Link")
+        height: 40
+        width: 157
+
+    }
+
+    FileDialog{
+        id: fileDialog
+        title: "Please choose a file"
+        onAccepted: {
+            console.log("file: " , fileDialog.fileUrls)
+            lblFilePath.text = fileDialog.fileUrl
+
+        }
+        onRejected:
+        {
+            console.log("quit")
+        }
     }
 
     Text {
@@ -73,5 +107,35 @@ Item {
         width: 208
         height: 15
         font.pixelSize: 12
+    }
+
+    Text{
+        id: lblErrors
+        x: 25
+        y: 380
+    }
+
+    function  validate(){
+        let errors = ""
+        if(!txtName.length) errors += "Name is required ";
+        if(!txtDesc.length) errors += "Description is required";
+        if(!txtPrice.length) errors += "Price is required"
+
+        if(errors.length){
+            lblErrors.text = errors
+            return false
+        }
+        return true;
+    }
+
+    function create_item(){
+        let item = Qt.createComponent(NaybrrItem)
+        item.name = txtName.text
+        item.accId = activeUserId
+        item.desc = txtDesc.text
+        item.price = txtPrice.text
+        item.quantity = 1
+        item.imgPath = txtImgpath.text
+        return item;
     }
 }

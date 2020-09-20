@@ -4,6 +4,8 @@
 #include <QStandardPaths>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QSslSocket>
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -15,12 +17,16 @@ int main(int argc, char *argv[])
     bool ok = db.open();
     qDebug() << basePath << '\n';
     qDebug() << "DB OPEN: " << ok;
+    qDebug() << "Device supports OpenSSL: " << QSslSocket::supportsSsl();
 
     const QString qry = "CREATE TABLE IF NOT EXISTS CartItems (ItemId INTEGER) ";
     QSqlQuery createTableIfNotExists;
     createTableIfNotExists.exec(qry);
 
     QGuiApplication app(argc, argv);
+
+    app.setOrganizationName("Naybrr");
+    app.setOrganizationDomain("Naybrr");
     QQuickStyle::setStyle("material");
     QQmlApplicationEngine engine;
     engine.addImportPath("qrc:/");
