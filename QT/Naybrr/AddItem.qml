@@ -1,6 +1,8 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
 import Naybrr 1.0
+import QtQuick.Dialogs 1.2
+
 
 Item {
     property alias btnReturn: btnReturn
@@ -55,17 +57,32 @@ Item {
         y: 97
         width: 357
         height: 92
-        text: "Proin neque orci, dapibus quis orci a, auctor lobortis felis. Duis molestie vehicula eros. Sed quis pellentesque enim. Nam eget ipsum lacus. Morbi eget augue justo. Nulla et velit quis ipsum ullamcorper mollis eu quis felis. Sed bibendum ligula non euismod mattis. Donec mollis commodo nulla, ut maximus lacus eleifend quis. Nulla eget neque ac lectus luctus finibus a vitae risus. Nulla ultrices consectetur ante. Duis eget ex pretium, hendrerit ligula vitae, tristique orci."
         wrapMode: Text.WordWrap
         verticalAlignment: Text.AlignTop
-        placeholderText: qsTr("Text Area")
+        placeholderText: qsTr("Description")
     }
+
 
     Button {
         id: btnImage
         x: 24
         y: 220
         text: qsTr("Image")
+        onClicked: fileDialog.visible = true
+    }
+
+    FileDialog{
+        id: fileDialog
+        title: "Please choose a file"
+        onAccepted: {
+            console.log("file: " , fileDialog.fileUrls)
+            lblFilePath.text = fileDialog.fileUrl
+
+        }
+        onRejected:
+        {
+            console.log("quit")
+        }
     }
 
     Text {
