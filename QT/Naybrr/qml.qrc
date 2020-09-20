@@ -8,7 +8,6 @@
         <file>RegistrationForm.ui.qml</file>
         <file>placeholders.qrc</file>
         <file>AppHub.qml</file>
-        <file>AppHubForm.ui.qml</file>
         <file>ItemsList.qml</file>
         <file>DetailedItem.qml</file>
         <file>UserSettings.qml</file>
