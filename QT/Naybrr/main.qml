@@ -182,6 +182,7 @@ ApplicationWindow {
         id: inventory
         InventoryHub{
             btnReturn.onClicked: stackView.pop()
+            uId: activeUserId
         }
     }
 
