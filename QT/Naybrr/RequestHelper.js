@@ -105,3 +105,27 @@ function updateItem(callback, nItem){
 
 }
 
+function findItems(callback, name, zip, accId){
+    let url = `https://naybrr.herokuapp.com/search?function=search_item&accountId=${accId}&search=${name}&zip=${zip}`
+    console.log("trying to find items")
+    console.log("Requesting For: ", url);
+    console.log("Encoded URL: ", encodeURI(url));
+    openRequest("GET", encodeURI(url), callback);
+
+}
+
+function getZipcodeForUserId(callback, accId){
+    let url = `https://naybrr.herokuapp.com/zipcode?function=find_zip&accountId=${accId}`
+    console.log("trying to get zipcode")
+    console.log("Requesting for: ", url);
+    console.log("EncodedURL: ", encodeURI(url));
+    openRequest("GET", encodeURI(url), callback);
+}
+
+function findNaybrrs(callback, name, zip, accId){
+    let url = `https://naybrr.herokuapp.com/find?function=find&search=${name}&zip=${zip}&accountId=${accId}`
+    console.log("trying to get users nearby")
+    console.log("Requesting for: ", url);
+    console.log("Encoded URL: ", encodeURI(url));
+    openRequest("GET", encodeURI(url), callback);
+}

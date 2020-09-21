@@ -76,8 +76,7 @@ void CartDAO::removeItemFromCart(int itemId)
 
 void CartDAO::dropCreateDatabase()
 {
-    QString qry = "DROP TABLE CartItems; ";
-    qry += " CREATE TABLE IF NOT EXISTS CartItems (ItemId INTEGER);";
+    QString qry = "DELETE FROM CartItems";
     QSqlQuery q = QSqlQuery(qry);
     q.exec();
 }

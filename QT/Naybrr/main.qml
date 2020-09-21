@@ -17,10 +17,6 @@ ApplicationWindow {
         initialItem: login
     }
 
-    User {
-        id: tempUser
-    }
-
     Component {
         id: login
         LoginForm {
@@ -32,6 +28,7 @@ ApplicationWindow {
                     if(data["accountid"] > 0){
                         stackView.push(appHub)
                         activeUserId = data["accountid"]
+
                     } else {
                         lblOut.text = "incorrect login";
                     }
@@ -197,6 +194,7 @@ ApplicationWindow {
     Component {
         id: appHub
         AppHub{
+            uId: activeUserId
             Drawer{
                 id: drawer
                 width: 0.4 * window.width;
