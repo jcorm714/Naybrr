@@ -13,14 +13,12 @@
         <file>UserSettings.qml</file>
         <file>NaybrrTab.qml</file>
         <file>NaybrrTabForm.ui.qml</file>
-        <file>open-menu.svg</file>
         <file>ItemsListNaybrrTab.qml</file>
         <file>InventoryHub.qml</file>
         <file>AddItem.qml</file>
         <file>UpdateItem.qml</file>
         <file>RequestHelper.js</file>
         <file>CartItems.qml</file>
-        <file>CartForm.ui.qml</file>
         <file>open-menu.png</file>
     </qresource>
     <qresource prefix="/icons"/>
