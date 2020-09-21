@@ -144,30 +144,9 @@ ApplicationWindow {
     Component {
 
         id: settings
-        UserSettingsForm {
+        UserSettings {
 
-            function create_user() {
-                //let u = txtUsername.text
-                let p = txtNewPassword.text
 
-                //let e = txtEmail.text
-                let a = txtAddr1.text
-                let a2 = txtAddr2.text
-                let c = txtCity.text
-                let s = cbState.CurrentText
-                let z = txtZip.text
-                let user = Qt.createComponent(User)
-                user.username = "test"
-                user.password = p
-                user.email = "email@net.com"
-                user.addr1 = a
-                user.addr2 = a2
-                user.city = c
-                user.state = s
-                user.zip = z
-                console.log(user)
-                return user
-            }
             btnBack.onClicked: stackView.pop()
             btnSubmit.onClicked: {
                 let u = create_user()

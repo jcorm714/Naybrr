@@ -5,8 +5,8 @@ Item {
     id: settingsPage
     width: 400
     height: 400
+    property int uId: -1
     property alias txtNewPassword: txtNewPassword
-
     property alias btnBack: btnBack
     property alias txtPasswordConfirm: txtPasswordConfirm
     property alias txtAddr1: txtAddr1

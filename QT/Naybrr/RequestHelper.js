@@ -105,3 +105,10 @@ function updateItem(callback, nItem){
 
 }
 
+function getUserDetailsFromId(callback, uId){
+    let url = `https://naybrr.herokuapp.com/info?function=user_info&accountId=${uId}`
+    console.log("Attempting to retreive user info")
+    console.log("Requesting for: ", url);
+    console.log("Encoded URL: ", encodeURI(url));
+    openRequest("GET", encodeURI(url), callback);
+}
