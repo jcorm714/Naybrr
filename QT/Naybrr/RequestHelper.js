@@ -122,3 +122,10 @@ function getZipcodeForUserId(callback, accId){
     openRequest("GET", encodeURI(url), callback);
 }
 
+function findNaybrrs(callback, name, zip, accId){
+    let url = `https://naybrr.herokuapp.com/find?function=find&search=${name}&zip=${zip}`
+    console.log("trying to get users nearby")
+    console.log("Requesting for: ", url);
+    console.log("Encoded URL: ", encodeURI(url));
+    openRequest("GET", encodeURI(url), callback);
+}

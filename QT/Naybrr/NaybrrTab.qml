@@ -2,13 +2,20 @@ import QtQuick 2.4
 import QtQuick.Controls 2.15
 import "RequestHelper.js" as RequestHelper
 
-NaybrrTabForm{
-    id: naybrrTab
-    Component {
-        id: items
-            ItemsListNaybrrTab{
-            }
+Item {
+    width: 400
+    height: 400
+    property alias stack: stack
+    property alias listView: listView
+    StackView {
+        id: stack
+        anchors.fill: parent
+    }
 
+    ListView {
+        id: listView
+        contentWidth: 0
+        anchors.fill: parent
     }
     stack.initialItem: naybrrTab
     listView.delegate: ItemDelegate {
@@ -16,20 +23,13 @@ NaybrrTabForm{
         width: 400
         height: 40
 
-        onClicked: stack.push(items);
+        onClicked: stack.push(items)
         Row {
             id: row1
-            Text {
-                text: user_id
-                font.bold: true
-            }
-
             Text {
                 text: username
                 font.bold: true
             }
-
-
 
             spacing: 10
         }
@@ -37,13 +37,5 @@ NaybrrTabForm{
     listView.model: ListModel {
         id: listModel
     }
-    Component.onCompleted: {
-        RequestHelper.getUsers(function(data){
-            for(let i =0; i < data.length; i++){
-                console.log(data[i]);
-                listModel.append(data[i])
-            }
 
-        })
-    }
 }

@@ -9,6 +9,7 @@ Item {
     height: 400
     property alias listView: listView
     property alias stackView: stackView
+    property alias listModel: listModel
     StackView {
         id: stackView
         anchors.fill: parent
@@ -22,69 +23,85 @@ Item {
       return  y.substr(0, deciIdx + 3)
 
     }
-
-    ListView {
-        id: listView
-        anchors.fill: parent
-        model: ListModel {
-            id: listModel
-        }
-        Component.onCompleted:{
-            RequestHelper.getItemList(function(data){
-                for(let i =0; i < data.length; i++){
-                    console.log(data[i]);
-                    listModel.append(data[i])
-                }
-
-            })
-        }
-
-        delegate: ItemDelegate {
-            x: 5
-            width: parent.width
-            height: 40
-            onClicked: {
-                RequestHelper.getItem(function(data){
-                    let itemView = Qt.createComponent("DetailedItem.qml")
-
-                    let propertyValues = {
-                        "db_id": data["db_id"],
-                        "imgPath": data["imPath"],
-                        "itemName": data["name"],
-                        "itemQuantity": "Quantity: " + data["quantity"],
-                        "itemDesc": data["desc"],
-                        "itemPrice": "$" + data["price"]
+    Item{
+        ListView {
+            id: listView
+            anchors.fill: parent
+            model: ListModel {
+                id: listModel
+            }
+            Component.onCompleted:{
+                RequestHelper.getItemList(function(data){
+                    for(let i =0; i < data.length; i++){
+                        console.log(data[i]);
+                        listModel.append(data[i])
                     }
-                    let obj = itemView.createObject(stackView, propertyValues)
-                    //               obj.btnReturn.onClicked = function(){ stackView.pop()}
-                    //               obj.btnPurchase.onClicked = function() {console.log("Purchased Item");}
-                    stackView.push(obj)
 
                 })
-
             }
 
-            Row {
-                id: row1
+            delegate: ItemDelegate {
+                x: 5
+                width: parent.width
+                height: 40
+                onClicked: {
+                    function createPage(comp, props){
+                        if(comp.status === Component.Ready){
+                            let obj = comp.createObject(stackView,props)
+                            stackView.push(obj);
+                        } else if (comp.status === Component.Error){
+                            console.log("Error has occurred")
+                            console.log(comp.errorString())
+                        }
+                    }
 
-                Text {
-                    text: name
+                    let callback = function (data) {
+                        let itemView = Qt.createComponent("DetailedItem.qml")
 
-                    font.bold: true
+                        let propertyValues = {
+                            "db_id": data["itemid"],
+                            "imgPath": data["imagepath"],
+                            "itemName": data["itemname"],
+                            "itemQuantity": "Quantity: " + data["quantity"],
+                            "itemDesc": data["description"],
+                            "itemPrice": data["price"]
+                        }
+                        if(itemView.status === Component.Ready){
+                            createPage(itemView, propertyValues)
+                        } else {
+                            itemView.statusChanged.connect(createPage(itemView, propertyValues))
+                        }
+
+
+                    }
+
+                    RequestHelper.findItem(callback, itemid)
                 }
-                Text {
-                    text: desc
 
-                    font.bold: true
-                }
-                Text {
-                    text: price
+                Row {
+                    id: row1
 
-                    font.bold: true
+                    Text {
+                        text: itemname
+
+                        font.bold: true
+                    }
+                    Text {
+                        text: description
+
+                        font.bold: true
+                    }
+                    Text {
+                        text: price
+
+                        font.bold: true
+                    }
+                    spacing: 10
                 }
-                spacing: 10
             }
-        }
+    }
+
+
 
         NaybrrItem {
             id: itemRef

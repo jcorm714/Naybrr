@@ -52,9 +52,18 @@ Item {
         }
 
         RequestHelper.findItems(callback, searchText, activeUserZip, uId)
-
-
     }
+
+    function searchNaybrrs(){
+        naybrrTab.listModel.clear();
+        let searchText = txtSearch.text
+        let callback = function(data){
+            for(let i = 0; i < data.length; i++){
+                itemsList.listModel.append(data[i])
+            }
+        }
+    }
+
     TextField {
         id: txtSearch
         x: 59
