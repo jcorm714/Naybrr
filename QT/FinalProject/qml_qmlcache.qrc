@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">../Naybrr/main.qml</file>
+        <file alias="qtquickcontrols2.conf">../Naybrr/qtquickcontrols2.conf</file>
+        <file alias="Login.qml">../Naybrr/Login.qml</file>
+        <file alias="LoginForm.ui.qml">../Naybrr/LoginForm.ui.qml</file>
+        <file alias="Registration.qml">../Naybrr/Registration.qml</file>
+        <file alias="RegistrationForm.ui.qml">../Naybrr/RegistrationForm.ui.qml</file>
+        <file alias="placeholders.qrc">../Naybrr/placeholders.qrc</file>
+        <file alias="AppHub.qml">../Naybrr/AppHub.qml</file>
+        <file alias="ItemsList.qml">../Naybrr/ItemsList.qml</file>
+        <file alias="DetailedItem.qml">../Naybrr/DetailedItem.qml</file>
+        <file alias="UserSettings.qml">../Naybrr/UserSettings.qml</file>
+        <file alias="NaybrrTab.qml">../Naybrr/NaybrrTab.qml</file>
+        <file alias="NaybrrTabForm.ui.qml">../Naybrr/NaybrrTabForm.ui.qml</file>
+        <file alias="ItemsListNaybrrTab.qml">../Naybrr/ItemsListNaybrrTab.qml</file>
+        <file alias="InventoryHub.qml">../Naybrr/InventoryHub.qml</file>
+        <file alias="AddItem.qml">../Naybrr/AddItem.qml</file>
+        <file alias="UpdateItem.qml">../Naybrr/UpdateItem.qml</file>
+        <file alias="RequestHelper.js">../Naybrr/RequestHelper.js</file>
+        <file alias="CartItems.qml">../Naybrr/CartItems.qml</file>
+        <file alias="open-menu.png">../Naybrr/open-menu.png</file>
+    </qresource>
+    <qresource prefix="/icons"/>
+</RCC>

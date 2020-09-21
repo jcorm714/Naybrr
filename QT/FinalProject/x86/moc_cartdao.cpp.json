@@ -1,0 +1,78 @@
+{
+    "classes": [
+        {
+            "classInfos": [
+                {
+                    "name": "QML.Element",
+                    "value": "Cart"
+                },
+                {
+                    "name": "QML.Singleton",
+                    "value": "true"
+                }
+            ],
+            "className": "CartDAO",
+            "methods": [
+                {
+                    "access": "public",
+                    "name": "getItemIdsInCart",
+                    "returnType": "QList<int>"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "type": "int"
+                        }
+                    ],
+                    "name": "isItemInCart",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "name": "numberOfItemsInCart",
+                    "returnType": "int"
+                }
+            ],
+            "object": true,
+            "qualifiedClassName": "CartDAO",
+            "slots": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "itemId",
+                            "type": "int"
+                        }
+                    ],
+                    "name": "addItemToCart",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "itemId",
+                            "type": "int"
+                        }
+                    ],
+                    "name": "removeItemFromCart",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "dropCreateDatabase",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "cartdao.h",
+    "outputRevision": 67
+}

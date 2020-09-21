@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <array name="qt_sources">
+        <item>https://download.qt.io/ministro/android/qt5/qt-5.14</item>
+    </array>
+
+    <!-- The following is handled automatically by the deployment tool. It should
+         not be edited manually. -->
+
+    <array name="bundled_libs">
+        <item>x86_64;crypto_1_1</item>
+        <item>x86_64;ssl_1_1</item>
+        <item>x86;crypto_1_1</item>
+        <item>x86;ssl_1_1</item>
+    </array>
+
+    <array name="qt_libs">
+        <item>x86_64;c++_shared</item>
+        <item>x86_64;Qt5Core_x86_64</item>
+        <item>x86_64;Qt5Gui_x86_64</item>
+        <item>x86_64;Qt5Network_x86_64</item>
+        <item>x86_64;Qt5Qml_x86_64</item>
+        <item>x86_64;Qt5QmlModels_x86_64</item>
+        <item>x86_64;Qt5Quick_x86_64</item>
+        <item>x86_64;Qt5QuickTemplates2_x86_64</item>
+        <item>x86_64;Qt5QuickControls2_x86_64</item>
+        <item>x86_64;Qt5Sql_x86_64</item>
+        <item>x86_64;Qt5QmlWorkerScript_x86_64</item>
+        <item>x86_64;Qt5Widgets_x86_64</item>
+        <item>x86_64;Qt5RemoteObjects_x86_64</item>
+        <item>x86;c++_shared</item>
+        <item>x86;Qt5Core_x86</item>
+        <item>x86;Qt5Gui_x86</item>
+        <item>x86;Qt5Network_x86</item>
+        <item>x86;Qt5Qml_x86</item>
+        <item>x86;Qt5QmlModels_x86</item>
+        <item>x86;Qt5Quick_x86</item>
+        <item>x86;Qt5QuickTemplates2_x86</item>
+        <item>x86;Qt5QuickControls2_x86</item>
+        <item>x86;Qt5Sql_x86</item>
+        <item>x86;Qt5QmlWorkerScript_x86</item>
+        <item>x86;Qt5Widgets_x86</item>
+        <item>x86;Qt5RemoteObjects_x86</item>
+    </array>
+
+    <array name="load_local_libs">
+        <item>x86_64;libplugins_platforms_qtforandroid_x86_64.so:libplugins_bearer_qandroidbearer_x86_64.so</item>
+        <item>x86;libplugins_platforms_qtforandroid_x86.so:libplugins_bearer_qandroidbearer_x86.so</item>
+    </array>
+
+</resources>
