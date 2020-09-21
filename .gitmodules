@@ -1,0 +1,3 @@
+[submodule "NaybrrAPI"]
+	path = NaybrrAPI
+	url = https://github.com/jdsisco/Naybrr-calls
