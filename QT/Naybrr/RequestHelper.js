@@ -129,3 +129,14 @@ function findNaybrrs(callback, name, zip, accId){
     console.log("Encoded URL: ", encodeURI(url));
     openRequest("GET", encodeURI(url), callback);
 }
+
+
+function orderItem(callback, itemId, accountId){
+    let quantity = 1;
+    let url = `https://naybrr.herokuapp.com/order?function=order_item&itemId=${itemId}&accountId=${accountId}&quantity=${quantity}`
+    console.log("Attempting to order item")
+    console.log("Requesting for: ", url);
+    console.log("Encoded URL: ", encodeURI(url))
+    openRequest("GET", url, callback)
+
+}
