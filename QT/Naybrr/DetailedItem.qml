@@ -16,10 +16,6 @@ Item {
     property var funcReturn: null
     property int db_id: -1
 
-    NaybrrItem{
-        id:itemDB
-    }
-
     Rectangle {
         id: rectangle
         color: "#ffffff"

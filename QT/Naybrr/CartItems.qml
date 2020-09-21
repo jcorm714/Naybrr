@@ -1,18 +1,23 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
 import Naybrr 1.0
+import "RequestHelper.js" as RequestHelper
 Item {
     width: 400
     height: 400
-    NaybrrItem{
-        id: itemRef
-    }
+
     function refeshList(){
         listModel.clear()
         let items = Cart.getItemIdsInCart()
+        let callback = function(data){
+            if(data !== null){
+                listModel.append(data)
+            }
+        }
+
         for(let i = 0; i < items.length; i++){
             console.log(items[i])
-            listModel.append(itemRef.findItemInDB(items[i]));
+            RequestHelper.findItem(callback, items[i])
         }
     }
     function make_pretty_decimal(x){
@@ -62,13 +67,13 @@ Item {
                 id: row1
                 spacing: 10
                 Text {
-                    text: name
+                    text: itemname
                     font.bold: true
                     anchors.left: parent.Left
                     anchors.baseline: parent.baseline
                 }
                 Text{
-                    text: make_pretty_decimal(price)
+                    text: price
                     font.bold: true
                     anchors.verticalCenter: parent.Center
                     anchors.baseline:  parent.baseline
@@ -77,7 +82,11 @@ Item {
                 Button{
                     id:btnDelete
                     text: "Remove"
-                    onClicked: Cart.removeItemFromCart(dbId);
+                    onClicked: {
+
+                        Cart.removeItemFromCart(itemid);
+                        refeshList();
+                    }
                     anchors.right: parent.Right
                     anchors.baseline: parent.baseline
 
