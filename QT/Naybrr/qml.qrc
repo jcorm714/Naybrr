@@ -21,6 +21,7 @@
         <file>RequestHelper.js</file>
         <file>CartItems.qml</file>
         <file>CartForm.ui.qml</file>
+        <file>open-menu.png</file>
     </qresource>
     <qresource prefix="/icons"/>
 </RCC>

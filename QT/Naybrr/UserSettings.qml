@@ -1,24 +1,38 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
 import "RequestHelper.js" as RequestHelper
+import Naybrr 1.0
 
 Item {
     id: settingsPage
     width: 400
     height: 400
     property int uId: -1
+    property string uEmail: ""
+    property string username: ""
+    property string userId: ""
     property string password: ""
     property string email: ""
     property string addr1: ""
     property string addr2: ""
     property string city:  ""
     property string state: ""
-    property zip zip: ""
+    property string zip: ""
 
     Component.onCompleted: {
         let callback = function(data){
-
+            txtAddr1.text = data["line1"]
+            txtAddr2.text = data["line2"]
+            txtCity.text = data["city"]
+            let state =  data["state"]
+            let i = cbState.find(state, Qt.MatchExactly)
+            cbState.currentIndex = i;
+            username = data["username"]
+            txtZip.text = data["zip"]
+            uEmail = data["email"]
         }
+
+        RequestHelper.getUserDetailsFromId(callback, uId)
     }
 
     TextField {
@@ -82,7 +96,7 @@ Item {
         width: 178
         height: 40
         editable: true
-        currentText: state
+        editText: state
         model: ListModel {
             id: us_states
             ListElement {
@@ -258,14 +272,7 @@ Item {
         width: 174
         height: 40
         text: qsTr("Submit")
-        onClicked: {
-            let errors = validate();
-            if(errors.length){
-                lblErrors.text = errors
-            } else {
-
-            }
-        }
+        onClicked: submit()
     }
 
     Button {
@@ -275,78 +282,108 @@ Item {
         width: 162
         height: 40
         text: qsTr("Back")
+        onClicked: stackView.pop()
     }
+
 
     Text {
         id: lblErrors
         x: 18
-        y: 358
+        y: 400
         width: 345
         height: 26
         font.pixelSize: 12
     }
 
     TextField {
-        id: txtPassword
+        id: txtPasswordSubmit
         x: 18
-        y: 256
+        y: 358
         width: 345
         height: 40
         text: ""
-        placeholderText: qsTr("Confirm Password")
+        placeholderText: qsTr("Enter Password to Confirm changes")
         font.bold: false
         echoMode: TextInput.Password
     }
 
 
     function create_user() {
-        //let u = txtUsername.text
-        let p = txtNewPassword.text
 
-        //let e = txtEmail.text
+        let p =""
+        if(txtPassword.text.length)
+        {
+            p = Util.hashPassword(txtPassword.text)
+        }
+        let e = uEmail
         let a = txtAddr1.text
         let a2 = txtAddr2.text
         let c = txtCity.text
         let s = cbState.currentText
         let z = txtZip.text
         let user = Qt.createComponent(User)
-        user.username = "test"
+        let id = uId;
         user.password = p
-        user.email = "email@net.com"
+        user.email = e
         user.addr1 = a
         user.addr2 = a2
         user.city = c
         user.state = s
         user.zip = z
+        user.uId = uId;
         console.log(user)
         return user
     }
 
+    function submit(){
+        let errors = validate()
+        if(errors.length > 0){
+            lblErrors.text = errors;
+            return;
+        }
+
+        function loginCallback(data) {
+            if(data["accountid"] > 0){
+                let updateCallback = function(result){
+                    if(result["success"]){
+                        stackView.pop()
+                    }
+
+
+                }
+
+
+                let u = create_user()
+                RequestHelper.updateUser(updateCallback, u)
+
+            }
+        }
+
+        let pass = Util.hashPassword(txtPasswordSubmit.text)
+        RequestHelper.login(loginCallback, username,  pass)
+
+
+    }
 
     function validate() {
 
-        let password = txtNewPassword.text
-        let passwordConfirm = txtPassword.text
-        let email = txtEmail.text
+
         let addr1 = txtAddr1.text
         let addr2 = txtAddr2.text
         let state = cbState.currentText
         let zip = txtZip.text
+        let passwordSubmit = txtPasswordSubmit.text
 
 
         let errormsg = ""
 
-        if (!password.length) {
-            errormsg += "Passwored required "
+        if(!passwordSubmit){
+            errormsg += "Password required to update settings"
         }
-        if (passwordConfirm !== password) {
-            errormsg += "Passwords Must Match "
-        }
-
-        //matches emails found the regex online lol
-        let re = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gm
-        if (!re.test(email)) {
-            errormsg += "Email is invalid "
+        if(password.length){
+            if (passwordConfirm !== password) {
+                errormsg += "Passwords Must Match "
+            }
         }
 
         if (state === "---Choose State---") {

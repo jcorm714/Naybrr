@@ -119,7 +119,7 @@ Item {
         y: 19
         width: 45
         height: 41
-        source: "open-menu.svg"
+        source: "open-menu.png"
         fillMode: Image.PreserveAspectFit
 
         MouseArea {

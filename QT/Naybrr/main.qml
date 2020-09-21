@@ -5,6 +5,8 @@ import Naybrr 1.0
 
 ApplicationWindow {
     property int activeUserId: -1;
+    property string activeUserName: ""
+    property string activeUserEmail: ""
     id:window
     visible: true
     width: 640
@@ -28,6 +30,7 @@ ApplicationWindow {
                     if(data["accountid"] > 0){
                         stackView.push(appHub)
                         activeUserId = data["accountid"]
+                        activeUseName = txtUsername.text
 
                     } else {
                         lblOut.text = "incorrect login";
@@ -142,7 +145,7 @@ ApplicationWindow {
 
         id: settings
         UserSettings {
-
+            uId: activeUserId
         }
     }
 

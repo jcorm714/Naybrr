@@ -65,14 +65,18 @@ function registerUser(callback, user)
 
 function updateUser(callback, user){
     let url = `https://naybrr.herokuapp.com/update?function=update_user&accountId=${user.uId}&`
-    url += `email=${user.email}&password=${user.password}`
+    url += `email=${user.email}`
+    if(user.password.length > 0){
+        url += `&password=${user.password}`;
+    }
+
     url += `&line1=${user.addr1}&line2=${user.addr2}`
     url += `&city=${user.city}&state=${user.state}&zip=${user.zip}`
     console.log("Attempting to update user settings")
     console.log("Request for: ", url);
     console.log("Encoded url: ", encodeURI(url))
     openRequest("GET", url, callback)
-
+}
 
 
 function insertItem(callback, nItem){
@@ -144,7 +148,7 @@ function getZipcodeForUserId(callback, accId){
 
 function findNaybrrs(callback, name, zip, accId){
     let url = `https://naybrr.herokuapp.com/find?function=find&search=${name}&zip=${zip}&accountId=${accId}`
-    console.log("trying to get users nearby")
+    console.log("trying to get users nearby");
     console.log("Requesting for: ", url);
     console.log("Encoded URL: ", encodeURI(url));
     openRequest("GET", encodeURI(url), callback);

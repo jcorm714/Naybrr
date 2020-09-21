@@ -18,7 +18,7 @@ class User: public QObject
     Q_PROPERTY(QString city READ getCity WRITE setCity)
     Q_PROPERTY(QString state READ getState WRITE setState)
     Q_PROPERTY(QString zip READ getZip WRITE setState)
-    Q_PROPERTY(QString uId READ getUserId WRITE setUserId)
+    Q_PROPERTY(int uId READ getUserId WRITE setUserId)
     QML_ELEMENT
 public:
     User(QObject *parent=nullptr);
