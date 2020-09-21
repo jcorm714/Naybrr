@@ -39,7 +39,10 @@ Item {
             id: itemsList
         }
         NaybrrTab { id: naybrrTab}
-        CartItems { id: cartItems}
+        CartItems {
+            id: cartItems
+            userId: activeUserId
+        }
     }
 
     function searchItems(){
