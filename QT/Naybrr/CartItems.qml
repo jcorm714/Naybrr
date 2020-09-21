@@ -2,10 +2,11 @@ import QtQuick 2.4
 import QtQuick.Controls 2.15
 import Naybrr 1.0
 import "RequestHelper.js" as RequestHelper
+
 Item {
     width: 400
     height: 400
-
+    property int userId: -1
     function refeshList(){
         listModel.clear()
         let items = Cart.getItemIdsInCart()
@@ -20,19 +21,27 @@ Item {
             RequestHelper.findItem(callback, items[i])
         }
     }
-    function make_pretty_decimal(x){
-      let y = ((x * 100) + 0.5)/100
-      y = y.toString()
-      let deciIdx = y.indexOf(".")
-      return  y.substr(0, deciIdx + 3)
 
-    }
+
 
     Button {
         id: btnPurchase
         x: 23
         y: 37
         text: "Purchase"
+        onClicked: function(){
+            let itemIds = Cart.getItemIdsInCart();
+            for(let i = 0; i < itemIds.length; i++){
+                let callback = function(data){
+                    if(data !== null){
+                        Cart.removeItemFromCart(data["itemId"])
+                        refeshList()
+                    }
+                }
+
+                RequestHelper.orderItem(callback, itemIds[i], userId)
+            }
+        }
     }
 
     Button {
