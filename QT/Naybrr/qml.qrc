@@ -16,7 +16,6 @@
         <file>NaybrrTabForm.ui.qml</file>
         <file>open-menu.svg</file>
         <file>ItemsListNaybrrTab.qml</file>
-        <file>ItemsListNaybrrTabForm.ui.qml</file>
         <file>InventoryHub.qml</file>
         <file>AddItem.qml</file>
         <file>UpdateItem.qml</file>

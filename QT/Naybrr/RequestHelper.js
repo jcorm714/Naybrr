@@ -123,7 +123,7 @@ function getZipcodeForUserId(callback, accId){
 }
 
 function findNaybrrs(callback, name, zip, accId){
-    let url = `https://naybrr.herokuapp.com/find?function=find&search=${name}&zip=${zip}`
+    let url = `https://naybrr.herokuapp.com/find?function=find&search=${name}&zip=${zip}&accountId=${accId}`
     console.log("trying to get users nearby")
     console.log("Requesting for: ", url);
     console.log("Encoded URL: ", encodeURI(url));

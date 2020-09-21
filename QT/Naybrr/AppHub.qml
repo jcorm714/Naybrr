@@ -58,10 +58,13 @@ Item {
         naybrrTab.listModel.clear();
         let searchText = txtSearch.text
         let callback = function(data){
+                naybrrTab.listModel.clear();
             for(let i = 0; i < data.length; i++){
-                itemsList.listModel.append(data[i])
+                naybrrTab.listModel.append(data[i])
             }
         }
+
+        RequestHelper.findNaybrrs(callback, searchText, activeUserZip, uId)
     }
 
     TextField {
@@ -79,10 +82,9 @@ Item {
                 case 0:
                     searchItems()
                     break;
-
-
                 //naybrrTab
                 case 1:
+                    searchNaybrrs()
                     break;
                 default:
                     break;

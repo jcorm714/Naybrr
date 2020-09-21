@@ -7,38 +7,55 @@ Item {
     id: element
     width: 400
     height: 400
+    property int accId: -1
     property alias listView: listView
-    property alias stackView: stackView
     property alias listModel: listModel
-    StackView {
-        id: stackView
-        anchors.fill: parent
-        initialItem: listView
+
+    function refresh(){
+        listModel.clear()
+        let callback = function (data) {
+            if (data.length) {
+                listModel.clear()
+                for (let i = 0; i < data.length; i++) {
+                    listModel.append(data[i])
+                }
+            }
+        }
+        RequestHelper.getUserInventory(callback, accId)
     }
 
-    function make_pretty_decimal(x){
-      let y = ((x * 100) + 0.5)/100
-      y = y.toString()
-      let deciIdx = y.indexOf(".")
-      return  y.substr(0, deciIdx + 3)
-
+    Button {
+        id: btnReturn
+        x: 25
+        y: 25
+        text: "Return"
+        onClicked: stackView.pop()
     }
-    Item{
+
+    Button {
+        id: btnRefresh
+        x: 225
+        y: 25
+        text: "Refresh"
+        onClicked: refresh()
+    }
+    Item {
+        x: 14
+        y: 100
+        width: 368
+        height: 378
+
         ListView {
+            x: 25
+            y: 100
             id: listView
             anchors.fill: parent
+            Component.onCompleted: refresh()
             model: ListModel {
                 id: listModel
             }
-            Component.onCompleted:{
-                RequestHelper.getItemList(function(data){
-                    for(let i =0; i < data.length; i++){
-                        console.log(data[i]);
-                        listModel.append(data[i])
-                    }
 
-                })
-            }
+
 
             delegate: ItemDelegate {
                 x: 5
@@ -77,10 +94,9 @@ Item {
 
                     RequestHelper.findItem(callback, itemid)
                 }
-
                 Row {
                     id: row1
-
+                    anchors.fill: parent
                     Text {
                         text: itemname
 
@@ -99,12 +115,8 @@ Item {
                     spacing: 10
                 }
             }
-    }
 
-
-
-        NaybrrItem {
-            id: itemRef
         }
     }
+
 }
