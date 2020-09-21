@@ -143,14 +143,6 @@ ApplicationWindow {
         id: settings
         UserSettings {
 
-
-            btnBack.onClicked: stackView.pop()
-            btnSubmit.onClicked: {
-                let u = create_user()
-                tempUser.updateUser(1, u.username, u.password, u.email,
-                                    u.addr1, u.addr2, u.city, u.state, u.zip)
-                stackView.pop()
-            }
         }
     }
 
@@ -204,9 +196,7 @@ ApplicationWindow {
                                 name: "Log out"
 
                             }
-                            ListElement {
-                                name: "Clear Cart"
-                            }
+
                         }
                     delegate: ItemDelegate{
                         x: 5
@@ -227,9 +217,7 @@ ApplicationWindow {
                                     case "Log out":
                                         stackView.pop();
                                         break;
-                                    case "Clear Cart":
-                                        Cart.dropCreateDatabase();
-                                        break;
+
 
 
 

@@ -1,5 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Controls 2.15
+import "RequestHelper.js" as RequestHelper
 
 Item {
     id: settingsPage
@@ -14,9 +15,14 @@ Item {
     property string state: ""
     property zip zip: ""
 
+    Component.onCompleted: {
+        let callback = function(data){
+
+        }
+    }
 
     TextField {
-        id: txtNewPassword
+        id: txtPassword
         x: 18
         y: 39
         width: 345
@@ -318,7 +324,7 @@ Item {
 
 
     function validate() {
-        let username = txtUsername.text
+
         let password = txtNewPassword.text
         let passwordConfirm = txtPassword.text
         let email = txtEmail.text
@@ -329,9 +335,7 @@ Item {
 
 
         let errormsg = ""
-        if (!username.length) {
-            errormsg += "Username required "
-        }
+
         if (!password.length) {
             errormsg += "Passwored required "
         }
