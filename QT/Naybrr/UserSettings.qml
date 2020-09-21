@@ -6,16 +6,14 @@ Item {
     width: 400
     height: 400
     property int uId: -1
-    property alias txtNewPassword: txtNewPassword
-    property alias btnBack: btnBack
-    property alias txtPasswordConfirm: txtPasswordConfirm
-    property alias txtAddr1: txtAddr1
-    property alias txtAddr2: txtAddr2
-    property alias txtCity: txtCity
-    property alias cbState: cbState
-    property alias txtZip: txtZip
-    property alias btnSubmit: btnSubmit
-    property alias lblErrors: lblErrors
+    property string password: ""
+    property string email: ""
+    property string addr1: ""
+    property string addr2: ""
+    property string city:  ""
+    property string state: ""
+    property zip zip: ""
+
 
     TextField {
         id: txtNewPassword
@@ -24,6 +22,7 @@ Item {
         width: 345
         height: 40
         placeholderText: qsTr("New Password")
+        text:password
         echoMode: TextInput.Password
     }
 
@@ -33,9 +32,10 @@ Item {
         y: 83
         width: 345
         height: 40
-        text: ""
+        text: password
         font.bold: false
         placeholderText: qsTr("Confirm Password")
+
         echoMode: TextInput.Password
     }
 
@@ -46,6 +46,7 @@ Item {
         width: 161
         height: 40
         placeholderText: qsTr("Address Line 1")
+        text: addr1
     }
 
     TextField {
@@ -54,6 +55,7 @@ Item {
         y: 126
         width: 178
         height: 40
+        text: addr2
         placeholderText: qsTr("Address Line 2")
     }
 
@@ -63,7 +65,7 @@ Item {
         y: 170
         width: 161
         height: 40
-        text: ""
+        text: city
         placeholderText: qsTr("City")
     }
 
@@ -74,6 +76,7 @@ Item {
         width: 178
         height: 40
         editable: true
+        currentText: state
         model: ListModel {
             id: us_states
             ListElement {
@@ -239,6 +242,7 @@ Item {
         width: 345
         height: 40
         placeholderText: qsTr("Zipcode")
+        text: zip
     }
 
     Button {
