@@ -5,6 +5,8 @@ import Naybrr 1.0
 
 ApplicationWindow {
     property int activeUserId: -1;
+    property string activeUserName: ""
+    property string activeUserEmail: ""
     id:window
     visible: true
     width: 640
@@ -28,6 +30,7 @@ ApplicationWindow {
                     if(data["accountid"] > 0){
                         stackView.push(appHub)
                         activeUserId = data["accountid"]
+                        activeUseName = txtUsername.text
 
                     } else {
                         lblOut.text = "incorrect login";
@@ -141,37 +144,8 @@ ApplicationWindow {
     Component {
 
         id: settings
-        UserSettingsForm {
-
-            function create_user() {
-                //let u = txtUsername.text
-                let p = txtNewPassword.text
-
-                //let e = txtEmail.text
-                let a = txtAddr1.text
-                let a2 = txtAddr2.text
-                let c = txtCity.text
-                let s = cbState.CurrentText
-                let z = txtZip.text
-                let user = Qt.createComponent(User)
-                user.username = "test"
-                user.password = p
-                user.email = "email@net.com"
-                user.addr1 = a
-                user.addr2 = a2
-                user.city = c
-                user.state = s
-                user.zip = z
-                console.log(user)
-                return user
-            }
-            btnBack.onClicked: stackView.pop()
-            btnSubmit.onClicked: {
-                let u = create_user()
-                tempUser.updateUser(1, u.username, u.password, u.email,
-                                    u.addr1, u.addr2, u.city, u.state, u.zip)
-                stackView.pop()
-            }
+        UserSettings {
+            uId: activeUserId
         }
     }
 
@@ -225,9 +199,7 @@ ApplicationWindow {
                                 name: "Log out"
 
                             }
-                            ListElement {
-                                name: "Clear Cart"
-                            }
+
                         }
                     delegate: ItemDelegate{
                         x: 5
@@ -248,9 +220,7 @@ ApplicationWindow {
                                     case "Log out":
                                         stackView.pop();
                                         break;
-                                    case "Clear Cart":
-                                        Cart.dropCreateDatabase();
-                                        break;
+
 
 
 
